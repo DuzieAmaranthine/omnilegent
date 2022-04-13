@@ -3,3 +3,41 @@
 @tailwind components;
 
 @tailwind utilities;
+
+:root {
+  --vLightGray: #f2f2f2;
+  --desatOrange: #735a44;
+  --darkBrown: #312011;
+  --dLimeGreen: #6b816c;
+  --darkCyan: #26524f;
+  --vDarkCyan: #1a3b2b;
+}
+
+body {
+  background-color: var(--vLightGray);
+}
+
+/* Home Page Header */
+.big-header {
+  background-color: var(--desatOrange);
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.big-nav {
+  margin: 2px 10px 10px 10px;
+  padding: 0px 10px 10px 10px;
+  border-radius: 0px 0px 15px 15px;
+  background-color: white;
+}
+
+.big-nav:hover {
+  border-bottom-color: #1a3b2b;
+  border-bottom-width: 4px;
+}
+
+/* Small Header */
