@@ -9,9 +9,14 @@ export class AddBook1649824625365 implements MigrationInterface {
 				columns : [
 					{
 						name : 'id',
-						type : 'text',
+						type : 'int',
 						isPrimary : true,
-						isGenerated : false,
+						isGenerated : true,
+					},
+					{
+						name : 'bookId',
+						type : 'text',
+						isNullable : true,
 					},
 					{
 						name : 'title',

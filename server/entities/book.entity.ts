@@ -1,10 +1,13 @@
-import { Column, Entity, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity
 export class Book {
-	@PrimaryColumn()
-	id : string;
+	@PrimaryGeneratedColumn()
+	id : number;
+
+	@Column({unique : false, nullable : true})
+	bookId : string;
 
 	@Column({unique : false, nullable : true})
 	title : string;
