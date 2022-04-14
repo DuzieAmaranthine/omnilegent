@@ -1,11 +1,11 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
 
 export class AddChatroomMessage1649824605445 implements MigrationInterface {
 
 	public async up(queryRunner: QueryRunner): Promise<void> {
 		await queryRunner.createTable(
 			new Table({
-				name : 'chatroom',
+				name : 'chat_room',
 					columns : [
 						{
 							name : 'id',
@@ -68,6 +68,16 @@ export class AddChatroomMessage1649824605445 implements MigrationInterface {
 						isNullable : false,
 					},
 				],
+			}),
+		);
+
+		await queryRunner.createForeignKey(
+			'message',
+			new TableForeignKey({
+				columnNames : ['chatRoomId'],
+				referencedColumnNames : ['id'],
+				referencedTableName : 'chat_room',
+				onDelete : 'CASCADE',
 			}),
 		);
 	}
