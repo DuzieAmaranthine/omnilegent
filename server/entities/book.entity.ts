@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 
-@Entity
+@Entity()
 export class Book {
 	@PrimaryGeneratedColumn()
 	id : number;
@@ -30,7 +30,7 @@ export class Book {
 	@Column({unique : false, nullable : false})
 	hasRead : boolean;
 
-	@ManyToOne(() => User, (user) => user.books)
-	user : User;
+	@Column({unique : false, nullable : false})
+	userId : number;
 
 }

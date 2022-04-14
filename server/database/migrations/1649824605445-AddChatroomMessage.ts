@@ -33,6 +33,11 @@ export class AddChatroomMessage1649824605445 implements MigrationInterface {
 							type : 'text',
 							isNullable : true
 						},
+						{
+							name : 'ownerId',
+							type : 'int',
+							isNullable : false,
+						},
 					],
 				}),
 		);
@@ -48,13 +53,18 @@ export class AddChatroomMessage1649824605445 implements MigrationInterface {
 						isGenerated :true,
 					},
 					{
-						name : 'user',
+						name : 'userName',
 						type : 'text',
 						isNullable : false,
 					},
 					{
 						name : 'contexts',
 						type : 'text',
+						isNullable : false,
+					},
+					{
+						name : 'chatRoomId',
+						type : 'int',
 						isNullable : false,
 					},
 				],

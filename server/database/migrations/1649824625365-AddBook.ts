@@ -53,6 +53,11 @@ export class AddBook1649824625365 implements MigrationInterface {
 						type : 'boolean',
 						isNullable : false,
 					},
+					{
+						name : 'userId',
+						type : 'int',
+						isNullable : false,
+					}
 				],
 			}),
 		);

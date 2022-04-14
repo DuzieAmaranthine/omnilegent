@@ -26,10 +26,4 @@ export class User {
 
   @OneToMany(() => UserRole, (userRole) => userRole.user, { cascade: true })
   userRoles: UserRole[];
-
-  @OneToMany(() => ChatRoom, (chatRoom) => chatRoom.owner, {cascade : true})
-  chatRooms : ChatRoom[];
-
-  @OneToMany(() => Book, (book) => book.user, {cascade : true})
-  books : Book[];
 }

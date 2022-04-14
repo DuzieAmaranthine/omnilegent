@@ -4,6 +4,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { config } from './database/config';
 import { UsersModule } from './modules/users.module';
+import { ChatRoomsModule } from './modules/chat_rooms.module';
+import { BooksModule } from './modules/books.module';
 import { PingGateway } from './providers/gateways/ping.gateway';
 import { AuthGuard } from './providers/guards/auth.guard';
 import { RolesGuard } from './providers/guards/roles.guard';
@@ -13,7 +15,7 @@ import { UsersService } from './providers/services/users.service';
 import { GuardUtil } from './providers/util/guard.util';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config), UsersModule],
+  imports: [TypeOrmModule.forRoot(config), UsersModule, ChatRoomsModule, BooksModule],
   controllers: [AppController],
   providers: [
     PingGateway,

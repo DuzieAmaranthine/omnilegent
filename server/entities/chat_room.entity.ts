@@ -1,5 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { User } from "./user.entity";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Message } from './message.entity'
 
 @Entity()
@@ -19,8 +18,8 @@ export class ChatRoom {
 	@Column({unique : false, nullable : true})
 	description : string;
 
-	@ManyToOne(() => User, (user) => user.chatRooms)
-	owner : User;
+	@Column({unique : false, nullable : false})
+	ownerId : number;
 
 	@OneToMany(() => Message, (message) => message.chatRoom, { cascade : true})
 	messages : Message[];

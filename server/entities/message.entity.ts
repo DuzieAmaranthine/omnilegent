@@ -7,10 +7,13 @@ export class Message {
 	id : number;
 
 	@Column({unique : false, nullable : false})
-	user : string;
+	userName : string;
 
 	@Column({unique : false, nullable : false})
 	contents : string;
+
+	@Column({unique : false, nullable : false})
+	chatRoomId : number;
 
 	@ManyToOne(() => ChatRoom, (chatRoom) => chatRoom.messages)
 	chatRoom : ChatRoom;
