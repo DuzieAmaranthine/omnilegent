@@ -20,6 +20,14 @@ body {
 /* Home Page Header */
 .big-header {
   background-color: var(--desatOrange);
+  height: 20%;
+  padding-top: 10px;
+  padding-left: 15px;
+}
+
+.title1 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: xx-large;
 }
 
 .nav-bar {
@@ -32,7 +40,9 @@ body {
   margin: 2px 10px 10px 10px;
   padding: 0px 10px 10px 10px;
   border-radius: 0px 0px 15px 15px;
+  border-bottom-width: 4px;
   background-color: white;
+  width: 20%;
 }
 
 .big-nav:hover {
@@ -41,3 +51,34 @@ body {
 }
 
 /* Small Header */
+
+
+/* Display Boxes */
+.box-holder {
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 800px) {
+  .box-holder {
+    flex-direction: column;
+  }
+}
+
+.box {
+  background-color: white;
+  margin: 16px;
+}
+
+.box-title {
+  background-color: var(--dLimeGreen);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: larger;
+  padding-left: 10px;
+  border-bottom-color: #26524f;
+  border-bottom-width: 4px;
+}
+
+.box-display {
+  padding: 10px 0px 10px 15px;
+}

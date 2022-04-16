@@ -4,6 +4,7 @@ import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
 import { HomeHeader } from '../common/homeHeader';
+import { DisplayBox } from '../common/displayBox';
 
 export const Home = () => {
   const [, setAuthToken] = useContext(AuthContext);
@@ -34,6 +35,11 @@ export const Home = () => {
   return (
     <div className="p-4">
       <HomeHeader></HomeHeader>
+      <div className="box-holder">
+        <DisplayBox></DisplayBox>
+        <DisplayBox></DisplayBox>
+        <DisplayBox></DisplayBox>
+      </div>
     </div>
   );
 };

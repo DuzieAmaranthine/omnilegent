@@ -6,7 +6,7 @@ export const HomeHeader =({ logout, home }) => {
   return(
     <div>
       <div className="big-header">
-        <h1>omnilegent:</h1>
+        <h1 className="title1">omnilegent:</h1>
         <h2>(adj) reading or having read everything</h2>
       </div>
       <div className="nav-bar">
