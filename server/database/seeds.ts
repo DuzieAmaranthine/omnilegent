@@ -8,6 +8,7 @@ import * as crypto from 'crypto';
 import { UserRole } from '../entities/user_role.entity';
 import { ChatRoom } from '../entities/chat_room.entity';
 import { Book } from '../entities/book.entity';
+import { UserChatRoom } from '../entities/user_chatroom.entity';
 dotenv.config();
 
 export default class Seeds implements Seeder {
@@ -113,7 +114,18 @@ export default class Seeds implements Seeder {
       room.description = 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum';
       room.ownerId = tempUser.id;
 
-      await chatroomRepository.save(room);
+      const newRoom = await chatroomRepository.save(room);
+
+      // let newUserChat = new UserChatRoom();
+      // newUserChat.userId = tempUser.id;
+      // newUserChat.roomId = newRoom.id;
+
+      // tempUser.userChatRooms = [newUserChat];
+      // newRoom.userChatRooms = [newUserChat];
+
+      // const updatedRoom = await chatroomRepository.update(newRoom.id, newRoom);
+      // const updatedUser = await userRepository.update(tempUser.id, tempUser);
+
       console.log(`Created room : ${room.name}`);
       
     });

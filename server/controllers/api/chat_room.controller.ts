@@ -5,6 +5,7 @@ import { ChatRoom } from "../../entities/chat_room.entity";
 import { ChatRoomsService } from "../../providers/services/chat_rooms.service";
 import { UsersService } from '../../providers/services/users.service';
 import * as crypto from 'crypto';
+import { UserChatRoom } from "server/entities/user_chatroom.entity";
 
 class ChatroomPostBody {
   name : string;
@@ -30,6 +31,11 @@ export class ChatroomController {
     return { room };
   }
 
+  @Get('/chat_rooms/user')
+  public async current(@JwtBody() jwtBody : JwtBodyDto) {
+    return this.chatroomsService.findAllForUser(jwtBody.userId);
+  }
+
   @Post('/chat_rooms')
   public async create(@JwtBody() jwtBody : JwtBodyDto, @Body() body : ChatroomPostBody) {
     const user = await this.usersService.find(jwtBody.userId);
@@ -43,7 +49,23 @@ export class ChatroomController {
 
     const newRoom = await this.chatroomsService.createChatRoom(room);
 
+    let newUserChat = new UserChatRoom();
+    newUserChat.userId = jwtBody.userId;
+    newUserChat.roomId = newRoom.id;
+
+    const createdUserChat = await this.chatroomsService.createUserChatRoom(newUserChat);
+
     return { newRoom };
+  }
+
+  @Post('/join_room/:id')
+  public async join(@Param('id') id : string, @JwtBody() jwtBody : JwtBodyDto) {
+    let newUserChat = new UserChatRoom();
+    newUserChat.userId = jwtBody.userId;
+    newUserChat.roomId = parseInt(id, 10);
+    const createdUserChat = await this.chatroomsService.createUserChatRoom(newUserChat);
+
+    return { createdUserChat };
   }
 
   @Delete('/chat_rooms/:id')
@@ -56,5 +78,17 @@ export class ChatroomController {
 
     await this.chatroomsService.deleteChatRoom(room);
     return {'success' : `${room.name} was deleted`};
+  }
+
+  @Delete('/quit_room/:id')
+  public async quit(@Param('id') id : string, @JwtBody() jwtBody : JwtBodyDto) {
+    const targetUserChat = await this.chatroomsService.findUserChatRoom(parseInt(id, 10));
+
+    if (targetUserChat.userId !== jwtBody.userId) {
+      return {'error' : 'Unauthorized'};
+    }
+
+    await this.chatroomsService.deleteUserChatRoom(targetUserChat);
+    return {'success' : 'User left the room'};
   }
 }

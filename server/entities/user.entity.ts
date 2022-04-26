@@ -3,6 +3,7 @@ import { ChatRoom } from './chat_room.entity';
 import { RefreshToken } from './refresh_token.entity';
 import { UserRole } from './user_role.entity';
 import { Book } from './book.entity';
+import { UserChatRoom } from './user_chatroom.entity';
 
 @Entity()
 export class User {
@@ -26,4 +27,7 @@ export class User {
 
   @OneToMany(() => UserRole, (userRole) => userRole.user, { cascade: true })
   userRoles: UserRole[];
+
+  @OneToMany(() => UserChatRoom, (userChatRoom) => userChatRoom.user, { cascade : true})
+  userChatRooms : UserChatRoom[];
 }
