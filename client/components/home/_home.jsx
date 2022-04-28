@@ -5,6 +5,7 @@ import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
 import { HomeHeader } from '../common/homeHeader';
 import { DisplayBox } from '../common/displayBox';
+import { Sort } from '../common/sort';
 
 export const Home = () => {
   const [, setAuthToken] = useContext(AuthContext);
@@ -36,7 +37,12 @@ export const Home = () => {
     <div className="p-4">
       <HomeHeader></HomeHeader>
       <div className="box-holder">
-        <DisplayBox></DisplayBox>
+        <DisplayBox>
+          <div className="sort-holder">
+            <Sort></Sort>
+          </div>
+        </DisplayBox>
+
         <DisplayBox></DisplayBox>
         <DisplayBox></DisplayBox>
       </div>

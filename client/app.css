@@ -6,6 +6,7 @@
 
 :root {
   --vLightGray: #f2f2f2;
+  --vDesatOrange: #534131;
   --desatOrange: #735a44;
   --darkBrown: #312011;
   --dLimeGreen: #6b816c;
@@ -43,6 +44,7 @@ body {
   border-bottom-width: 4px;
   background-color: white;
   width: 20%;
+  font-style: italic;
 }
 
 .big-nav:hover {
@@ -50,13 +52,44 @@ body {
   border-bottom-width: 4px;
 }
 
+
+
 /* Small Header */
+.small-header{
+  background-color: var(--desatOrange);
+}
+
+.title2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: xx-large;
+}
+
+.small-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: white;
+}
+
+.small-nav {
+  padding: 5px 10px 5px 10px;
+  border-bottom-width: 2px;
+  border-bottom-color: white;
+  font-style: italic;
+}
+
+.small-nav:hover {
+  border-bottom-color: #1a3b2b;
+  border-bottom-width: 2px;
+}
+
 
 
 /* Display Boxes */
 .box-holder {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
 @media (max-width: 800px) {
@@ -80,5 +113,31 @@ body {
 }
 
 .box-display {
-  padding: 10px 0px 10px 15px;
+  padding: 10px 15px 10px 15px;
+}
+
+li {
+  margin-bottom: 4px;
+  border-bottom-width: 1px;
+}
+
+li:hover {
+  background-color: #fafafa;
+}
+
+.sort-holder {
+  background-color: red;
+}
+
+
+
+/* Book Clubs */
+.bc-header {
+  background-color: #1a3b2b;
+}
+
+.bc-title {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: xx-large;
+  color: white;
 }

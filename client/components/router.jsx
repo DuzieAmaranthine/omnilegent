@@ -5,6 +5,10 @@ import { AuthContext } from '../utils/auth_context';
 import { SignIn } from './sign_in/_sign_in';
 import { SignUp } from './sign_up/_sign_up';
 import { Admin } from './admin/_admin';
+import { TbrList } from './tbr_list/_tbr_list';
+import { Library } from './library/_library';
+import { BookClubs} from './book_clubs/_book_clubs';
+
 
 export const Router = () => {
   const [authToken] = useContext(AuthContext);
@@ -18,6 +22,9 @@ export const Router = () => {
       <Route path="admin" element={<Admin />} />
       <Route path="signin" element={<SignIn />} />
       <Route path="signup" element={<SignUp />} />
+      <Route path="tbrlist" element={<TbrList />} />
+      <Route path="library" element={<Library />} />
+      <Route path="bookclubs" element={<BookClubs />} />
     </Routes>
   );
 };
