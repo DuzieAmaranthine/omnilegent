@@ -5,6 +5,7 @@ import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
 import { HomeHeader } from '../common/homeHeader';
 import { DisplayBox } from '../common/displayBox';
+import { Sort } from '../common/sort';
 
 export const Home = () => {
   const [, setAuthToken] = useContext(AuthContext);
