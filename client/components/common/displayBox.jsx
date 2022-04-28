@@ -1,7 +1,8 @@
 export const DisplayBox =({  }) => {
   return(
     <div className="box">
-      <div className="box-title">TBR List
+      <div className="box-title">
+        <span>TBR List</span>
         <button className="add">+</button>
       </div>
       <div className="sort-box">
