@@ -1,14 +1,23 @@
-export const DisplayBox =({  }) => {
+export const DisplayBox =({ header, list, emptyMessage }) => {
+
+
   return(
     <div className="box">
-      <div className="box-title">TBR List</div>
+      <div className="box-title">{ header }</div>
       <div className="box-display">
-        <ul>
-          <li>Quarry in the Quince</li>
-          <li>Revenge in the Roses</li>
-          <li>Silenced in the Sunflowers</li>
-          <li>Chuck Palahniuk 3rd BOOK!</li>
-        </ul>
+        {list.length === 0 && 
+          <div>
+            {emptyMessage}
+          </div>
+        }
+
+        {list.length > 0 &&
+          <div>
+            {list.map((item) => (
+              <div>{item.title}</div>
+            ))}
+          </div>
+        }
       </div>
     </div>
   )

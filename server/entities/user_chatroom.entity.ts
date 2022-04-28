@@ -11,7 +11,7 @@ export class UserChatRoom {
   userId : number;
 
   @Column()
-  roomId : number;
+  chatRoomId : number;
 
   @ManyToOne(() => User, (user) => user.userChatRooms)
   user : User;

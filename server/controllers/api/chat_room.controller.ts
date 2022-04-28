@@ -8,7 +8,7 @@ import * as crypto from 'crypto';
 import { UserChatRoom } from "server/entities/user_chatroom.entity";
 
 class ChatroomPostBody {
-  name : string;
+  title : string;
   description : string;
 }
 
@@ -31,8 +31,10 @@ export class ChatroomController {
     return { room };
   }
 
-  @Get('/chat_rooms/user')
+  @Get('/current_rooms')
   public async current(@JwtBody() jwtBody : JwtBodyDto) {
+    console.log(jwtBody.userId);
+    
     return this.chatroomsService.findAllForUser(jwtBody.userId);
   }
 
@@ -42,7 +44,7 @@ export class ChatroomController {
     let room = new ChatRoom();
 
     room.key = crypto.randomBytes(8).toString('hex');
-    room.name = body.name;
+    room.title = body.title;
     room.ownerName = user.firstName;
     room.description = body.description;
     room.ownerId = jwtBody.userId;
@@ -51,7 +53,7 @@ export class ChatroomController {
 
     let newUserChat = new UserChatRoom();
     newUserChat.userId = jwtBody.userId;
-    newUserChat.roomId = newRoom.id;
+    newUserChat.chatRoomId = newRoom.id;
 
     const createdUserChat = await this.chatroomsService.createUserChatRoom(newUserChat);
 
@@ -62,7 +64,7 @@ export class ChatroomController {
   public async join(@Param('id') id : string, @JwtBody() jwtBody : JwtBodyDto) {
     let newUserChat = new UserChatRoom();
     newUserChat.userId = jwtBody.userId;
-    newUserChat.roomId = parseInt(id, 10);
+    newUserChat.chatRoomId = parseInt(id, 10);
     const createdUserChat = await this.chatroomsService.createUserChatRoom(newUserChat);
 
     return { createdUserChat };
@@ -77,7 +79,7 @@ export class ChatroomController {
     }
 
     await this.chatroomsService.deleteChatRoom(room);
-    return {'success' : `${room.name} was deleted`};
+    return {'success' : `${room.title} was deleted`};
   }
 
   @Delete('/quit_room/:id')

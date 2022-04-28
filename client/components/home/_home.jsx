@@ -15,8 +15,22 @@ export const Home = () => {
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [tbrList, setTbrList] = useState([]);
+  const [library, setLibrary] = useState([]);
+  const [clubs, setClubs] = useState([]);
+  
   useEffect(async () => {
     const res = await api.get('/users/me');
+    const tbr = await api.get('/books_to_read');
+    const lib = await api.get('/books_read');
+    const clubs = await api.get('/current_rooms');
+
+    console.log(clubs);
+
+    setTbrList(tbr.books);
+    setLibrary(lib.books);
+    setClubs(clubs);
+    
     setUser(res.user);
     setLoading(false);
   }, []);
@@ -36,9 +50,21 @@ export const Home = () => {
     <div className="p-4">
       <HomeHeader></HomeHeader>
       <div className="box-holder">
-        <DisplayBox></DisplayBox>
-        <DisplayBox></DisplayBox>
-        <DisplayBox></DisplayBox>
+        <DisplayBox
+        header="TBRList"
+        list={tbrList}
+        emptyMessage="Start Looking!"
+        ></DisplayBox>
+        <DisplayBox
+        header="Library"
+        list={library}
+        emptyMessage="Start Reading!"
+        ></DisplayBox>
+        <DisplayBox
+        header="Book Clubs"
+        list={clubs}
+        emptyMessage="Join a Club!"
+        ></DisplayBox>
       </div>
     </div>
   );

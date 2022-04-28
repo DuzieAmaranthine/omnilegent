@@ -21,8 +21,8 @@ export class ChatRoomsService {
     return this.chatRoomRepository.findOne(id);
   }
 
-  findAllForUser(userId : number) {
-    return this.userChatRoomRepository.find({ relations : ['chat_room'], where : { userId : userId}});
+  findAllForUser(userId : number) : Promise<UserChatRoom[]> {
+    return this.userChatRoomRepository.find({ relations : ['chatRoom'], where : { userId : userId}});
   }
 
   deleteChatRoom(chatRoom : ChatRoom) {

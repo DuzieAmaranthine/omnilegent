@@ -19,7 +19,7 @@ export class AddChatroomMessage1649824605445 implements MigrationInterface {
 							isNullable : false,
 						},
 						{
-							name : 'name',
+							name : 'title',
 							type : 'text',
 							isNullable : false,
 						},
@@ -40,6 +40,30 @@ export class AddChatroomMessage1649824605445 implements MigrationInterface {
 						},
 					],
 				}),
+		);
+
+		await queryRunner.createTable(
+			new Table({
+				name : 'user_chat_room',
+				columns : [
+					{
+						name : 'id',
+						type : 'int',
+						isPrimary : true,
+						isGenerated : true,
+					},
+					{
+						name : 'userId',
+						type : 'int',
+						isNullable : false,
+					},
+					{
+						name : 'chatRoomId',
+						type : 'int',
+						isNullable : false,
+					},
+				],
+			}),
 		);
 
 		await queryRunner.createTable(
@@ -80,11 +104,32 @@ export class AddChatroomMessage1649824605445 implements MigrationInterface {
 				onDelete : 'CASCADE',
 			}),
 		);
+
+		await queryRunner.createForeignKey(
+			'user_chat_room',
+			new TableForeignKey({
+				columnNames : ['userId'],
+				referencedColumnNames : ['id'],
+				referencedTableName : 'user',
+				onDelete : 'CASCADE',
+			}),
+		);
+
+		await queryRunner.createForeignKey(
+			'user_chat_room',
+			new TableForeignKey({
+				columnNames : ['chatRoomId'],
+				referencedColumnNames : ['id'],
+				referencedTableName : 'chat_room',
+				onDelete : 'CASCADE',
+			}),
+		);
 	}
 
 	public async down(queryRunner: QueryRunner): Promise<void> {
 		await queryRunner.dropTable('message');
-		await queryRunner.dropTable('chatroom');
+		await queryRunner.dropTable('chat_room');
+		await queryRunner.dropTable('user_chat_room');
 	}
 
 }
