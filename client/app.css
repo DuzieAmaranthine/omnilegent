@@ -108,8 +108,8 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: larger;
   padding-left: 10px;
-  border-bottom-color: #26524f;
-  border-bottom-width: 4px;
+  /* border-bottom-color: #26524f;
+  border-bottom-width: 4px; */
 }
 
 .box-display {
@@ -125,8 +125,21 @@ li:hover {
   background-color: #fafafa;
 }
 
-.sort-holder {
-  background-color: red;
+.sort-box {
+  background-color: var(--vDarkCyan);
+  padding-left: 10px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+
+label {
+  color: var(--vLightGray);
+  padding-right: 8px;
+}
+
+select {
+  background-color: var(--vDarkCyan);
+  color: var(--vLightGray);
 }
 
 

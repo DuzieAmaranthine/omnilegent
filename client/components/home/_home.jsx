@@ -37,12 +37,7 @@ export const Home = () => {
     <div className="p-4">
       <HomeHeader></HomeHeader>
       <div className="box-holder">
-        <DisplayBox>
-          <div className="sort-holder">
-            <Sort></Sort>
-          </div>
-        </DisplayBox>
-
+        <DisplayBox></DisplayBox>
         <DisplayBox></DisplayBox>
         <DisplayBox></DisplayBox>
       </div>

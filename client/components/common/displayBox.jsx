@@ -1,7 +1,21 @@
 export const DisplayBox =({  }) => {
   return(
     <div className="box">
-      <div className="box-title">TBR List</div>
+      <div className="box-title">TBR List
+        <button className="add">+</button>
+      </div>
+      <div className="sort-box">
+        <label for="sorting">Sort by:</label>
+
+        <select>
+          <option>Title</option>
+          <option>Author</option>
+          <option>Genre</option>
+          <option>Date Added</option>
+          <option>Page Count</option>
+        </select>
+    </div>
+
       <div className="box-display">
         <ul>
           <li>Quarry in the Quince</li>
