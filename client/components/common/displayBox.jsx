@@ -1,8 +1,10 @@
-export const DisplayBox =({  }) => {
+export const DisplayBox =({ header, list, emptyMessage }) => {
+
+
   return(
     <div className="box">
       <div className="box-title">
-        <span>TBR List</span>
+        <span>{ header }</span>
         <button className="add">+</button>
       </div>
       <div className="sort-box">
@@ -15,20 +17,22 @@ export const DisplayBox =({  }) => {
           <option>Date Added</option>
           <option>Page Count</option>
         </select>
-    </div>
-
+      </div>
+      
       <div className="box-display">
-        <ul>
-          <li>Quarry in the Quince</li>
-          <li>Revenge in the Roses</li>
-          <li>Silenced in the Sunflowers</li>
-          <li>Chuck Palahniuk 3rd BOOK!</li>
-          <li>Eyes Like Stars</li>
-          <li>The Hitchhikers Guide to the Galaxy</li>
-          <li>My Gun is Quick</li>
-          <li>The Night Circus</li>
-          <li>A Midsummer Night's Steampunk</li>
-        </ul>
+        {list.length === 0 && 
+          <div>
+            {emptyMessage}
+          </div>
+        }
+
+        {list.length > 0 &&
+          <div>
+            {list.map((item) => (
+              <div key={item.id}>{item.title}</div>
+            ))}
+          </div>
+        }
       </div>
     </div>
   )

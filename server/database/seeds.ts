@@ -108,7 +108,7 @@ export default class Seeds implements Seeder {
       let index = Math.floor(Math.random() * userArray.length);
       let tempUser = userArray[index];
       let room = new ChatRoom();
-      room.name = title;
+      room.title = title;
       room.key = crypto.randomBytes(8).toString('hex');
       room.ownerName = tempUser.firstName;
       room.description = 'Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum';
@@ -126,7 +126,7 @@ export default class Seeds implements Seeder {
       // const updatedRoom = await chatroomRepository.update(newRoom.id, newRoom);
       // const updatedUser = await userRepository.update(tempUser.id, tempUser);
 
-      console.log(`Created room : ${room.name}`);
+      console.log(`Created room : ${room.title}`);
       
     });
 

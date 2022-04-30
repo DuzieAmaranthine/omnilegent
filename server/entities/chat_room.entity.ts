@@ -11,7 +11,7 @@ export class ChatRoom {
 	key : string;
 
 	@Column({unique : false, nullable : false})
-	name : string;
+	title : string;
 
 	@Column({unique : false, nullable : false})
 	ownerName : string;
