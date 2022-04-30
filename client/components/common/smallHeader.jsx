@@ -6,8 +6,8 @@ export const SmallHeader =({ home, logout }) => {
   return(
     <div>
       <div className="small-header">
-        <h1 className="title2">omnilegent:</h1>
-        <h2>(adj) reading or having read everything</h2>
+        <h1 className="title2">TBR List</h1>
+        <h2>Omnilegent: (adj) reading or having read everything</h2>
       </div>
       <div className="small-nav-bar">
         <button className="small-nav" onClick={home}>Home</button>

@@ -4,7 +4,9 @@ import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
 import { SmallHeader } from '../common/smallHeader';
-import { DisplayBox } from '../common/displayBox';
+import { BookDisplay } from '../common/bookDisplay';
+import { AddBook } from '../common/addBook';
+import { Modal } from '../common/modal';
 
 export const TbrList = () => {
   const [, setAuthToken] = useContext(AuthContext);
@@ -35,6 +37,11 @@ export const TbrList = () => {
   return (
     <div className="p-4">
       <SmallHeader></SmallHeader>
+      <Modal></Modal>
+      <div className="bookshelf">
+        <AddBook></AddBook>
+        <BookDisplay></BookDisplay>
+      </div>
     </div>
   );
 };

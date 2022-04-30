@@ -150,6 +150,46 @@ select {
 
 
 
+/* TBR & Library */
+.bookshelf {
+  background-color: white;
+  margin: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.book-display {
+  border-width: 2px;
+  width: 45%;
+}
+
+
+.add-holder {
+  width: 45%;
+}
+
+.add-button {
+  padding: 8px;
+  border-width: 2px;
+  width: 45%;
+}
+
+
+
+/* Modal */
+.modal-container {
+  background-color: var(--darkCyan);
+  padding: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+
 /* Book Clubs */
 .bc-header {
   background-color: #1a3b2b;
