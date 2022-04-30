@@ -10,10 +10,10 @@ export const HomeHeader =({ logout }) => {
         <h2>(adj) reading or having read everything</h2>
       </div>
       <div className="nav-bar">
-        <button className="big-nav" onClick={() => navigate(`tbrList`)}>TBR list</button>
+        <button className="big-nav" onClick={() => navigate(`tbrList`)}>TBR List</button>
         <button className="big-nav" onClick={() => navigate(`library`)}>My Library</button>
         <button className="big-nav" onClick={() => navigate(`bookClubs`)}>Book Clubs</button>
-        <button className="big-nav" onClick={logout}>logout</button>
+        <button className="big-nav" onClick={logout}>Logout</button>
       </div>
     </div>
   )
