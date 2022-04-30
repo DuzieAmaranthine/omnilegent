@@ -50,7 +50,7 @@ export const Home = () => {
 
   return (
     <div className="p-4">
-      <HomeHeader logout={logout}></HomeHeader>
+      <HomeHeader logout={ logout }></HomeHeader>
       <div className="box-holder">
         <DisplayBox
         header="TBRList"

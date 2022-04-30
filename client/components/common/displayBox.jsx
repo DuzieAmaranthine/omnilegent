@@ -3,8 +3,10 @@ export const DisplayBox =({ header, list, emptyMessage }) => {
 
   return(
     <div className="box">
-      <div className="box-title">{ header }</div>
-      <button className="add">+</button>
+      <div className="box-title">
+        <span>{ header }</span>
+        <button className="add">+</button>
+      </div>
       <div className="sort-box">
         <label htmlFor="sorting">Sort by:</label>
 
