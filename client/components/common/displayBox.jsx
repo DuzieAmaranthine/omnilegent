@@ -6,9 +6,9 @@ export const DisplayBox =({ header, list, emptyMessage }) => {
       <div className="box-title">{ header }</div>
       <button className="add">+</button>
       <div className="sort-box">
-        <label for="sorting">Sort by:</label>
+        <label htmlFor="sorting">Sort by:</label>
 
-        <select>
+        <select id="sorting">
           <option>Title</option>
           <option>Author</option>
           <option>Genre</option>
