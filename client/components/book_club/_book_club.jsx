@@ -54,12 +54,16 @@ export const BookClub = () => {
 
   return (
     <div className='p-4'>
-      <BcHeader logout={logout} header={club.title}></BcHeader>
-
       <div className='club-container'>
         <MembersBar club={club} user={user}></MembersBar>
 
         <div className='chat-container'>
+          <BcHeader 
+            logout={logout} 
+            header={club.title} 
+            topic={club.currentTopic ? club.currentTopic : null} 
+            meeting={ club.meetingTime ? club.meetingTime : null}
+          ></BcHeader>
 
           <div className='messages-container'>
             {messages.length > 0 && 

@@ -1,13 +1,21 @@
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 
-export const BcHeader =({ logout, header }) => {
+export const BcHeader =({ logout, header, topic, meeting }) => {
   const navigate = useNavigate();
   return(
     <div>
       <div className="bc-header">
-        <h1 className="bc-title">{ header }</h1>
+        <div className="bc-title">
+          <h1>{ header }</h1>
+          {topic && 
+            <h3 className="bc-subtitle">{ `Meets : ${meeting}` }</h3>
+          }
+        </div>
+        {meeting && 
+          <div className="bc-subsubtitle">{ topic  }</div>
+        }
       </div>
+        
       <div className="bc-nav-bar">
         <button className="big-nav" onClick={() => navigate(`../`)}>Home</button>
         <button className="big-nav" onClick={() => navigate(`../tbrList`)}>TBR List</button>
