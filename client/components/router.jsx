@@ -8,6 +8,7 @@ import { Admin } from './admin/_admin';
 import { TbrList } from './tbr_list/_tbr_list';
 import { Library } from './library/_library';
 import { BookClubs} from './book_clubs/_book_clubs';
+import { BookClub } from './book_club/_book_club';
 
 
 export const Router = () => {
@@ -25,6 +26,7 @@ export const Router = () => {
       <Route path="tbrlist" element={<TbrList />} />
       <Route path="library" element={<Library />} />
       <Route path="bookclubs" element={<BookClubs />} />
+      <Route path="bookclub/:id" element={<BookClub />} />
     </Routes>
   );
 };

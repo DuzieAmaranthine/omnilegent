@@ -33,9 +33,15 @@ export class ChatroomController {
 
   @Get('/current_rooms')
   public async current(@JwtBody() jwtBody : JwtBodyDto) {
-    console.log(jwtBody.userId);
-    
     return this.chatroomsService.findAllForUser(jwtBody.userId);
+  }
+
+  @Get('/club_members/:id')
+  public async members(@Param('id') id : string) {
+    const memberObjs = await this.chatroomsService.findMembersForClub(parseInt(id, 10));
+    console.log(memberObjs);
+    
+    return memberObjs;
   }
 
   @Post('/chat_rooms')

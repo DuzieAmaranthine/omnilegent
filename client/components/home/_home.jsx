@@ -24,13 +24,14 @@ export const Home = () => {
     const res = await api.get('/users/me');
     const tbr = await api.get('/books_to_read');
     const lib = await api.get('/books_read');
-    const clubs = await api.get('/current_rooms');
+    // const clubs = await api.get('/current_rooms');
+    const clubs = await api.get('/chat_rooms');
 
     console.log(clubs);
 
     setTbrList(tbr.books);
     setLibrary(lib.books);
-    setClubs(clubs);
+    setClubs(clubs.rooms);
     
     setUser(res.user);
     setLoading(false);

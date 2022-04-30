@@ -153,4 +153,77 @@ select {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: xx-large;
   color: white;
+  padding: 5px 10px;
+}
+
+/* Book Club */
+.chat-button {
+  width: 60px;
+  height: 40px;
+  background-color: var(--vDarkCyan);
+  color: var(--vLightGray);
+  margin-top: 8px;
+}
+
+.club-container {
+  display: flex;
+  flex-direction: row;
+  height: 88vh;
+  width: 100%;
+}
+
+.chat-containter {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.member-bar {
+  width: 86px;
+  height: 100%;
+  border-right: var(--vDarkCyan) solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.messages-container {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 85%;
+  width: 100%;
+  margin-left: 12px;
+  overflow-y: scroll;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  width: 100%;
+  border-top: black solid;
+  padding-top: 20px;
+  align-items: flex-end;
+  padding-right: 20px;
+}
+
+.text-container textarea {
+  width: 85vw;
+  height: 8vh;
+  resize: none;
+  overflow: hidden;
+}
+
+.text-container textarea::placeholder {
+  font-style: italic;
+}
+.user-icon {
+  background-color: var(--darkBrown);
+  color: white;
+  margin: 10px 5px;
+  padding: 16%;
+  width: 54px;
+  height: 54px;
+  border-radius: 100%;
+  font-size: 20px;
 }

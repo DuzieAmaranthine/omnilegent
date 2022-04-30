@@ -34,7 +34,7 @@ export const BookClubs = () => {
 
   return (
     <div className="p-4">
-      <BcHeader></BcHeader>
+      <BcHeader logout={logout} header={'Placeholder'}></BcHeader>
     </div>
   );
 };

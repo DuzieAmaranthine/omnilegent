@@ -25,6 +25,10 @@ export class ChatRoomsService {
     return this.userChatRoomRepository.find({ relations : ['chatRoom'], where : { userId : userId}});
   }
 
+  findMembersForClub(id : number) : Promise<UserChatRoom[]> {
+    return this.userChatRoomRepository.find({ relations : ['user'], where : {chatRoomId : id}});
+  }
+
   deleteChatRoom(chatRoom : ChatRoom) {
     return this.chatRoomRepository.delete(chatRoom);
   }
