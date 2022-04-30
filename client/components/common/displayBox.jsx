@@ -8,9 +8,9 @@ export const DisplayBox =({ header, list, emptyMessage }) => {
         <button className="add">+</button>
       </div>
       <div className="sort-box">
-        <label htmlFor="sorting">Sort by:</label>
+        <label htmlFor={`sorting-${header}`}>Sort by:</label>
 
-        <select id="sorting">
+        <select id={`sorting-${header}`}>
           <option>Title</option>
           <option>Author</option>
           <option>Genre</option>
