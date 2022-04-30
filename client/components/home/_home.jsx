@@ -53,19 +53,19 @@ export const Home = () => {
       <HomeHeader logout={ logout }></HomeHeader>
       <div className="box-holder">
         <DisplayBox
-        header="TBRList"
+        header="TBR List"
         list={tbrList}
-        emptyMessage="Start Looking!"
+        emptyMessage="Add Books to your To Be Read List"
         ></DisplayBox>
         <DisplayBox
         header="Library"
         list={library}
-        emptyMessage="Start Reading!"
+        emptyMessage="Add Books to your Virtual Library"
         ></DisplayBox>
         <DisplayBox
         header="Book Clubs"
         list={clubs}
-        emptyMessage="Join a Club!"
+        emptyMessage="Start or Join a Book Club"
         ></DisplayBox>
       </div>
     </div>

@@ -92,15 +92,21 @@ body {
   justify-content: space-evenly;
 }
 
-@media (max-width: 800px) {
-  .box-holder {
-    flex-direction: column;
-  }
-}
-
 .box {
   background-color: white;
   margin: 16px;
+  width: 30%;
+}
+
+@media (max-width: 800px) {
+  .box-holder {
+    flex-direction: column;
+    margin-right: 26px;
+  }
+
+  .box {
+    width: 100%;
+  }
 }
 
 .box-title {
@@ -108,20 +114,20 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: larger;
   padding-left: 10px;
-  /* border-bottom-color: #26524f;
-  border-bottom-width: 4px; */
+  border-bottom-color: #26524f;
+  border-bottom-width: 4px;
 }
 
 .box-display {
   padding: 10px 15px 10px 15px;
 }
 
-li {
+.list-display {
   margin-bottom: 4px;
   border-bottom-width: 1px;
 }
 
-li:hover {
+.list-display:hover {
   background-color: #fafafa;
 }
 
