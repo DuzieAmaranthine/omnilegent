@@ -10,16 +10,12 @@ export const MembersBar = ({club, user}) => {
   useEffect(async () => {
     const members = api.get(`/club_members/${club.id}`);
     setMembers(members);
-    console.log(user);
-
   
     setLoading(false);
   }, []);
 
   const getMemberIcon = (member) => {
     const memberSplit = member.split(' ');
-    console.log(memberSplit);
-
 
     if (memberSplit.length === 1) {
       return (memberSplit[0][0] + memberSplit[0][1]).toUpperCase();
@@ -36,6 +32,7 @@ export const MembersBar = ({club, user}) => {
 
   return (
     <div className="member-bar">
+      <div className="member-title">Members</div>
       <div className="user-icon">{getMemberIcon(user.firstName + ' ' + user.lastName)}</div>
       {members.length > 0 && 
         members.map((member) => (

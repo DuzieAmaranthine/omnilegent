@@ -193,6 +193,9 @@ form {
 /* Book Clubs */
 .bc-header {
   background-color: #1a3b2b;
+  display: flex;
+  flex-direction: column;
+  height: 8vh;
 }
 
 .bc-title {
@@ -200,8 +203,31 @@ form {
   font-size: xx-large;
   color: white;
   padding: 5px 10px;
+  display: flex;
+  flex-direction: row;
 }
 
+.bc-title h1 {
+  border-bottom: solid var(--darkCyan);
+  /* text-decoration: underline var(--darkCyan) 4px; */
+  width:80%;
+  height: 48px;
+}
+
+.bc-subtitle {
+  font-size: medium;
+  font-style: italic;
+  margin-left: 12px;
+  margin-top: 10px;
+  text-decoration: none;
+}
+
+.bc-subsubtitle {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: medium;
+  color: white;
+  margin-left: 28px;
+}
 /* Book Club */
 .chat-button {
   width: 60px;
@@ -209,13 +235,15 @@ form {
   background-color: var(--vDarkCyan);
   color: var(--vLightGray);
   margin-top: 8px;
+  border-radius: 15px;
 }
 
 .club-container {
   display: flex;
   flex-direction: row;
-  height: 88vh;
+  height: 96vh;
   width: 100%;
+  overflow: hidden;
 }
 
 .chat-containter {
@@ -226,17 +254,26 @@ form {
 }
 
 .member-bar {
-  width: 86px;
+  width: 108px;
   height: 100%;
   border-right: var(--vDarkCyan) solid;
+  background-color: var(--vDarkCyan);
   display: flex;
   flex-direction: column;
+  padding-top: 8vh;
+  padding-left: 14px;
+}
+
+.member-title {
+  color: var(--vLightGray);
+  font-size: large;
+  border-bottom: var(--darkCyan) solid;
 }
 
 .messages-container {
   display: flex;
   flex-direction: column-reverse;
-  height: 85%;
+  height: 70%;
   width: 100%;
   margin-left: 12px;
   overflow-y: scroll;
@@ -258,13 +295,16 @@ form {
   height: 8vh;
   resize: none;
   overflow: hidden;
+  border-radius: 15px;
+  padding: 8px;
+  font-size: large;
 }
 
 .text-container textarea::placeholder {
   font-style: italic;
 }
 .user-icon {
-  background-color: var(--darkBrown);
+  background-color: var(--dLimeGreen);
   color: white;
   margin: 10px 5px;
   padding: 16%;
