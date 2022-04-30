@@ -9,8 +9,11 @@ class BookPostBody {
   author : string;
   description : string;
   pages : number;
+  hasRead : boolean;
   pubDate : string;
+  dateRead : string;
   thumbnail : string;
+  genre : string;
 }
 
 @Controller()
@@ -50,8 +53,10 @@ export class BookController {
     book.pages = body.pages;
     book.pubDate = body.pubDate;
     book.thumbnail = body.thumbnail;
-    book.hasRead = false;
+    book.hasRead = body.hasRead;
+    book.dateRead = body.dateRead;
     book.userId = jwtBody.userId;
+    book.genre = body.genre;
 
     const newBook = await this.booksService.createBook(book);
 
@@ -59,14 +64,15 @@ export class BookController {
   }
 
   @Put('/books/:id')
-  public async update(@Param('id') id : string, @JwtBody() jwtBody : JwtBodyDto) {
+  public async update(@Param('id') id : string, @JwtBody() jwtBody : JwtBodyDto,) {
     let book = await this.booksService.findBookById(parseInt(id, 10));
 
     if (book.userId !== jwtBody.userId) {
       return {'error' : 'Unauthorized'};
     }
 
-    book.hasRead = !book.hasRead;
+    book.hasRead = true;
+    book.dateRead = Date.toString();
     const updatedBook = await this.booksService.updateBook(book);
 
     return {'success' : `Book's read status is now ${book.hasRead}`};

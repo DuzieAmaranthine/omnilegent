@@ -34,6 +34,16 @@ export class AddChatroomMessage1649824605445 implements MigrationInterface {
 							isNullable : true
 						},
 						{
+							name : 'meetingTime',
+							type : 'text',
+							isNullable : true,
+						},
+						{
+							name : 'currentTopic',
+							type : 'text',
+							isNullable : true,
+						},
+						{
 							name : 'ownerId',
 							type : 'int',
 							isNullable : false,

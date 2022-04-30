@@ -29,6 +29,11 @@ export class AddBook1649824625365 implements MigrationInterface {
 						isNullable : true,
 					},
 					{
+						name : 'genre',
+						type : 'text',
+						isNullable : true,
+					},
+					{
 						name : 'description',
 						type : 'text',
 						isNullable : true,
@@ -52,6 +57,11 @@ export class AddBook1649824625365 implements MigrationInterface {
 						name : 'hasRead',
 						type : 'boolean',
 						isNullable : false,
+					},
+					{
+						name : 'dateRead',
+						type : 'text',
+						isNullable : true,
 					},
 					{
 						name : 'userId',

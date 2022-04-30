@@ -19,6 +19,12 @@ export class ChatRoom {
 	@Column({unique : false, nullable : true})
 	description : string;
 
+	@Column({unique : false, nullable : true})
+	meetingTime : string;
+
+	@Column({unique : false, nullable : true})
+	currentTopic : string;
+
 	@Column({unique : false, nullable : false})
 	ownerId : number;
 

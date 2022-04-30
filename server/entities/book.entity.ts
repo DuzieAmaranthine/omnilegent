@@ -16,6 +16,9 @@ export class Book {
 	author : string;
 
 	@Column({unique : false, nullable : true})
+	genre : string;
+
+	@Column({unique : false, nullable : true})
 	description : string;
 
 	@Column({unique : false, nullable : true})
@@ -29,6 +32,9 @@ export class Book {
 
 	@Column({unique : false, nullable : false})
 	hasRead : boolean;
+
+	@Column({unique : false, nullable : true})
+	dateRead : string;
 
 	@Column({unique : false, nullable : false})
 	userId : number;

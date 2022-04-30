@@ -10,6 +10,8 @@ import { UserChatRoom } from "server/entities/user_chatroom.entity";
 class ChatroomPostBody {
   title : string;
   description : string;
+  meetingTime : string;
+  currentTopic : string;
 }
 
 @Controller()
@@ -53,7 +55,16 @@ export class ChatroomController {
     room.title = body.title;
     room.ownerName = user.firstName;
     room.description = body.description;
+    room.meetingTime = body.meetingTime;
     room.ownerId = jwtBody.userId;
+
+    if (body.currentTopic) {
+      room.currentTopic = body.currentTopic;
+    }
+
+    if (body.meetingTime) {
+      room.meetingTime = body.meetingTime;
+    }
 
     const newRoom = await this.chatroomsService.createChatRoom(room);
 
