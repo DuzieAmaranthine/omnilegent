@@ -32,7 +32,7 @@ export const TbrList = () => {
     const newBook = await api.post('/books', book);
 
     if (!book.hasRead) {
-      setTbrList([...tbrList, newbook.newBook]);
+      setTbrList([...tbrList, newBook.newBook]);
     }
   }
 
