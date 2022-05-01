@@ -194,10 +194,22 @@ form {
 .search-form {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .search {
+  width: 50%;
+}
+
+.search-input {
+  display: flex;
+  flex-direction: column;
   width: 45%;
+  /* margin-right: 200px; */
+}
+
+.book-form {
+  width: 50%
 }
 
 .input-fields {
@@ -209,10 +221,31 @@ form {
   height: 100px;
 }
 
+.read-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.radio-option {
+  margin-right: 8px;
+}
+
 .setRead {
   display: flex;
   flex-direction: column;
 }
+
+.modal-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 
 
 /* Book Clubs */
