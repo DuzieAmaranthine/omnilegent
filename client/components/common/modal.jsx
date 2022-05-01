@@ -2,6 +2,17 @@ import { useState } from 'react';
 import { Button } from '../common/button';
 
 export const Modal = ({ }) => {
+  const [searchList, setSearchList] = useState([]);
+  const [currentBook, setCurrentBook] = useState(null);
+
+  const search = async (query) => {
+
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=50&`
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data = setSearchList(data.items));
+  }
 
   return (
     <>

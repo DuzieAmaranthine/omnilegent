@@ -15,13 +15,46 @@ export const TbrList = () => {
 
   const navigate = useNavigate();
 
+  const [tbrList, setTbrList] = useState([[]]);
+
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   useEffect(async () => {
     const res = await api.get('/users/me');
+    const bookList = await api.get('/books_to_read');
+
+    setTbrList(bookList.books);
     setUser(res.user);
     setLoading(false);
   }, []);
+
+  const addBook = async (book) => {
+    const newBook = await api.post('/books', book);
+
+    if (!book.hasRead) {
+      setTbrList([...tbrList, newbook.newBook]);
+    }
+  }
+
+  const completeBook = async (book) => {
+    const finished = await api.put(`/books/${book.id}`);
+
+    if (finished.success) {
+      const newTbr = tbrList.filter((books) => books.id !== book.id);
+      setTbrList(newTbr);
+      return;
+    }
+  }
+
+  const deleteBook = async (book) => {
+    const deleteBook = await api.delete(`/books/${book.id}`);
+
+    if (deleteBook.success) {
+      const newTbr = tbrList.filter((books) => books.id !== book.id);
+      setTbrList(newTbr);
+      return;
+    }
+  }
 
   const logout = async () => {
     const res = await api.del('/sessions');
