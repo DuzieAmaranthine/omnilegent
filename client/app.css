@@ -267,7 +267,6 @@ form {
 
 .bc-title h1 {
   border-bottom: solid var(--darkCyan);
-  /* text-decoration: underline var(--darkCyan) 4px; */
   width:80%;
   height: 48px;
 }
