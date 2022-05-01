@@ -11,7 +11,13 @@ export const Modal = ({ }) => {
             <div className="modal-title">Add a New Book</div>
 
             <div className="search-form">
-              <div className="search">Search...</div>
+              <div className="search-input">
+                <form>
+                  <label for="bsearch">Start Looking: </label>
+                  <input type="search" placeholder="Search..." id="bsearch" name="bsearch" />
+                </form>
+              </div>
+              
               <div className="book-form">
                 <form>
                   <div className="input-fields">
@@ -29,14 +35,20 @@ export const Modal = ({ }) => {
                   
                   </div>
                   
-                  <div>
+                  <div className="read-form">
                     <span>Have You Read It Yet?</span>
                     
-                    <label for="hasRead">Yes</label>
-                    <input type="radio" id="hasRead" name="has_read" value="Yes" />
-
-                    <label for="hasNotRead">No</label>
-                    <input type="radio" id="hasNotRead" name="has_read" value="No" />
+                    <div className="radio-form">
+                      <div className="radio-option">
+                        <label for="hasRead">Yes</label>
+                        <input type="radio" id="hasRead" name="has_read" value="Yes" />
+                      </div>
+                      
+                      <div className="radio-option">
+                        <label for="hasNotRead">No</label>
+                        <input type="radio" id="hasNotRead" name="has_read" value="No" />
+                      </div>
+                    </div>
                     
                     <label for="rdate">Date Read:</label>
                     <input type="date" id="rdate" name="rdate" />
