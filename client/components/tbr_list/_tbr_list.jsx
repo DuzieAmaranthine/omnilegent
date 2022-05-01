@@ -70,7 +70,7 @@ export const TbrList = () => {
   return (
     <div className="p-4">
       <SmallHeader></SmallHeader>
-      <Modal></Modal>
+      <Modal addBook={addBook}></Modal>
       <div className="bookshelf">
         <AddBook></AddBook>
         <BookDisplay></BookDisplay>
