@@ -18,6 +18,8 @@ body {
   background-color: var(--vLightGray);
 }
 
+
+
 /* Home Page Header */
 .big-header {
   background-color: var(--desatOrange);
@@ -185,6 +187,29 @@ select {
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.search {
+  width: 45%;
+}
+
+.input-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.bdisc {
+  height: 100px;
+}
+
+.setRead {
   display: flex;
   flex-direction: column;
 }
