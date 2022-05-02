@@ -104,21 +104,21 @@ export const Modal = ({ addBook }) => {
 
             <div className="search-form">
               <div className="search-input">
-                <form>
+                <div>
                   <label htmlFor="bsearch">Start Looking: </label>
                   <input 
-                    type="search" 
+                    type="text" 
                     placeholder="Search..." 
                     id="bsearch" 
                     name="bsearch"
                     onChange={(e) => search(e.target.value)}  
                   />
-                </form>
+                </div>
 
                 <div>
                   {searchList &&
                     searchList.map((book) => (
-                      <div onClick={() => applyBook(book)}>
+                      <div key={book.volumeInfo.id} onClick={() => applyBook(book)}>
                         <div>
                           {book.volumeInfo.imageLinks &&
                             <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="" />
@@ -126,7 +126,9 @@ export const Modal = ({ addBook }) => {
                         </div>
                         <div>
                           <div>{ book.volumeInfo.title }</div>
-                          <div>{ book.volumeInfo.authors[0] }</div>
+                          {book.volumeInfo.authors &&
+                            <div>{ book.volumeInfo.authors[0] }</div>
+                          }
                         </div>
                         
                       </div>

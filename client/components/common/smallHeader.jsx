@@ -10,7 +10,7 @@ export const SmallHeader =({ home, logout }) => {
         <h2>Omnilegent: (adj) reading or having read everything</h2>
       </div>
       <div className="small-nav-bar">
-        <button className="small-nav" onClick={() => navigate('../')}>Home</button>
+        <Link to='/'><button className="small-nav">Home</button></Link>
         <button className="small-nav" onClick={() => navigate(`../library`)}>My Library</button>
         <button className="small-nav" onClick={() => navigate(`../bookClubs`)}>Book Clubs</button>
         <button className="small-nav" onClick={logout}>Logout</button>

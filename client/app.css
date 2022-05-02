@@ -214,6 +214,10 @@ form {
   /* margin-right: 200px; */
 }
 
+.search-input input {
+  width : 100%;
+}
+
 .book-form {
   width: 50%
 }
