@@ -34,7 +34,7 @@ export const TbrList = () => {
     if (!book.hasRead) {
       setTbrList([...tbrList, newBook.newBook]);
     }
-  }
+  };
 
   const completeBook = async (book) => {
     const finished = await api.put(`/books/${book.id}`);
@@ -44,7 +44,7 @@ export const TbrList = () => {
       setTbrList(newTbr);
       return;
     }
-  }
+  };
 
   const deleteBook = async (book) => {
     const deleteBook = await api.delete(`/books/${book.id}`);
@@ -52,9 +52,9 @@ export const TbrList = () => {
     if (deleteBook.success) {
       const newTbr = tbrList.filter((books) => books.id !== book.id);
       setTbrList(newTbr);
-      return;
     }
-  }
+    return;
+  };
 
   const logout = async () => {
     const res = await api.del('/sessions');
@@ -69,7 +69,7 @@ export const TbrList = () => {
 
   return (
     <div>
-      <SmallHeader></SmallHeader>
+      <SmallHeader header={'TBR List'} logout={logout}></SmallHeader>
       <Modal addBook={addBook}></Modal>
       <div className="bookshelf">
         <AddBook></AddBook>

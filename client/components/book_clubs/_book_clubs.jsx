@@ -15,8 +15,16 @@ export const BookClubs = () => {
 
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [myClubs, setMyClubs] = useState([]);
+  const [clubs, setClubs] = useState([]);
+
   useEffect(async () => {
     const res = await api.get('/users/me');
+    const allClubs = await api.get('/chat_rooms');
+    const joinedClubs = await api.get('/chat_rooms/user/');
+
+    setClubs(allClubs.rooms);
+    setMyClubs(joinedClubs.rooms);
     setUser(res.user);
     setLoading(false);
   }, []);
@@ -34,7 +42,7 @@ export const BookClubs = () => {
 
   return (
     <div>
-      <BcHeader logout={logout} header={'Placeholder'}></BcHeader>
+      <BcHeader logout={logout} header={'My Book Clubs'}></BcHeader>
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router";
 
-export const SmallHeader =({ logout }) => {
+export const SmallHeader =({ logout, header }) => {
   const navigate = useNavigate();
   return(
     <div>
       <div className="small-header">
-        <h1 className="title2">TBR List</h1>
+        <h1 className="title2">{header}</h1>
         <h2>Omnilegent: (adj) reading or having read everything</h2>
       </div>
       <div className="small-nav-bar">

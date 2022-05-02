@@ -3,7 +3,7 @@ export const BookDisplay =({ book }) => {
   return(
     <div className="book-display">
       <div className="thumb-display">
-        {book.thumbnail && <img source={book.thumbnail} />}
+        {book.thumbnail && <img src={book.thumbnail} alt=''/>}
         {book.hasRead === true && <div>{book.dateRead}</div>}
       </div>
       <div className="info-display">
