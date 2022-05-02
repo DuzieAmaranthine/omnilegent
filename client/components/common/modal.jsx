@@ -124,7 +124,7 @@ export const Modal = ({ addBook }) => {
                             <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="" />
                           }
                         </div>
-                        <div>
+                        <div className="name-results">
                           <div>Title: { book.volumeInfo.title }</div>
                           {book.volumeInfo.authors &&
                           <div>Author: { book.volumeInfo.authors[0] }</div>

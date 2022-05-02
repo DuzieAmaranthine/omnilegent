@@ -278,6 +278,10 @@ form {
   cursor: pointer;
 }
 
+.name-results {
+  margin-left: 8px;
+}
+
 .book-form {
   width: 50%
 }
