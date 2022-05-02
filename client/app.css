@@ -247,6 +247,7 @@ select {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 .modal-container {
   z-index: 10;
   background-color: var(--darkCyan);
@@ -256,7 +257,7 @@ select {
   border-style: inset;
   border-width: 6px;
   border-color: var(--vDarkCyan);
-  width: 90%;
+  width: 80vw;
 }
 
 .modal-title {
@@ -336,7 +337,11 @@ form {
 .bdisc {
   display: flex;
   justify-content: flex-start;
-  height: 100px;
+  height: 20vh;
+}
+
+textarea {
+  max-height: 20vh;
 }
 
 .rtitle {
