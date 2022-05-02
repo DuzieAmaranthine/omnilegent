@@ -73,17 +73,18 @@ export const TbrList = () => {
         {openModal && <Modal addBook={addBook} closeModal={() => setOpenModal(false)}></Modal>}
       <div>
         <SmallHeader header={'TBR List'} logout={logout}></SmallHeader>
-        <div className="bookshelf">
-          <AddBook open={() => setOpenModal(true)}></AddBook>
 
+        <div className='add-button-holder'>
+          <AddBook open={() => setOpenModal(true)}></AddBook>
+        </div>
+        
+        <div className="bookshelf">
           {tbrList.length > 0 &&
             tbrList.map((book) => (
               <BookDisplay key={book.id} book={book}></BookDisplay>
             ))}
         </div>
-
       </div>
-    
     </div>
   );
 };

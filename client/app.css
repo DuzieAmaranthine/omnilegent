@@ -180,28 +180,51 @@ select {
 
 
 /* TBR & Library */
+.add-button-holder {
+  background-color: var(--lightGray);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 16px;
+}
+
+.add-button-holder:hover {
+  background-color: var(--gray);
+}
+
 .bookshelf {
   background-color: white;
   margin: 16px;
-  padding: 16px;
+  padding: 0px 16px 16px 16px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
 .book-display {
-  border-width: 2px;
+  display: flex;
+  flex-direction: row;
+  border-bottom-width: 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin: 8px;
   width: 45%;
+  
 }
 
-.add-holder {
-  width: 45%;
+.thumb-display {
+  width: 100%;
+  margin-right: 8px;
+  float: left;
 }
 
-.add-button {
-  padding: 8px;
-  border-width: 2px;
-  width: 45%;
+.book-display:hover {
+  background-color: #fafafa;
+}
+
+.info-display {
+  max-height: 30vh;
+  overflow-y: auto;
 }
 
 
@@ -233,6 +256,7 @@ select {
   border-style: inset;
   border-width: 6px;
   border-color: var(--vDarkCyan);
+  width: 90%;
 }
 
 .modal-title {
