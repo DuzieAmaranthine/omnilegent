@@ -6,6 +6,8 @@
 
 :root {
   --vLightGray: #f2f2f2;
+  --lightGray: #cccccc;
+  --gray: #a6a6a6;
   --vDesatOrange: #534131;
   --desatOrange: #735a44;
   --darkBrown: #312011;
@@ -16,6 +18,20 @@
 
 body {
   background-color: var(--vLightGray);
+}
+
+.default-button {
+  display: flex;
+  flex-direction: row;
+  background-color: var(--lightGray);
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 10px;
+  font: bolder;
+}
+
+.default-button:hover {
+  background-color: var(--gray);
 }
 
 
@@ -210,6 +226,7 @@ select {
   font-size: x-large;
   font-family: Georgia, 'Times New Roman', Times, serif;
   color: var(--dLimeGreen);
+  text-shadow: 2px 2px 2px var(--vDarkCyan)
 }
 
 form {
@@ -221,6 +238,7 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  max-height: 50%;
 }
 
 .search {
@@ -231,11 +249,33 @@ form {
   display: flex;
   flex-direction: column;
   width: 45%;
-  /* margin-right: 200px; */
 }
 
 .search-input input {
   width : 100%;
+}
+
+.search-list {
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  overflow-y: auto;
+}
+
+.search-list::-webkit-scrollbar {
+  width: 0 !important;
+}
+
+.search-results {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8px;
+  color: white;
+  font-size: small;
+}
+
+.search-results:hover {
+  cursor: pointer;
 }
 
 .book-form {
@@ -254,21 +294,32 @@ form {
 }
 
 .rtitle {
-  color: var(--dLimeGreen);
+  color: white;
+  display: flex;
+  justify-content: center;
 }
 
 .read-form {
   display: flex;
   flex-direction: column;
+  padding: 8px;
+  margin-top: 6px;
 }
 
 .radio-form {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .radio-option {
   margin-right: 8px;
+}
+
+.date-holder {
+  display: flex;
+  flex-direction: column;
+  margin: 6px;
 }
 
 .setRead {
