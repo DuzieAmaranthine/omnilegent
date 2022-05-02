@@ -73,7 +73,11 @@ export const TbrList = () => {
       <Modal addBook={addBook}></Modal>
       <div className="bookshelf">
         <AddBook></AddBook>
-        <BookDisplay></BookDisplay>
+
+        {tbrList.length > 0 &&
+          tbrList.map((book) => (
+            <BookDisplay book={book}></BookDisplay>
+          ))}
       </div>
     </div>
   );

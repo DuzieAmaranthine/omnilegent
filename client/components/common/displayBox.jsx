@@ -1,6 +1,5 @@
 export const DisplayBox =({ header, list, emptyMessage }) => {
 
-
   return(
     <div className="box">
       <div className="box-title">
@@ -18,7 +17,7 @@ export const DisplayBox =({ header, list, emptyMessage }) => {
         {list.length > 0 &&
           <div>
             {list.map((item) => (
-              <div className="list-display" key={item.id}>{item.title}</div>
+              <div className="list-display" key={item.id}>{item.title} {item.author ? ` by ${item.author}` : ''}</div>
             ))}
           </div>
         }

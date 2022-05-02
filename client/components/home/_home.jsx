@@ -6,8 +6,7 @@ import { RolesContext } from '../../utils/roles_context';
 import { HomeHeader } from '../common/homeHeader';
 import { DisplayBox } from '../common/displayBox';
 import { Sort } from '../common/sort';
-import * as dotenv from 'dotenv';
-dotenv.config();
+import { Link } from 'react-router-dom';
 
 export const Home = () => {
   const bookKey = process.env.REACT_APP_BOOK_KEY;
@@ -55,21 +54,29 @@ export const Home = () => {
     <div>
       <HomeHeader logout={ logout }></HomeHeader>
       <div className="box-holder">
-        <DisplayBox
-        header="TBR List"
-        list={tbrList}
-        emptyMessage="Add Books to your To Be Read List"
-        ></DisplayBox>
-        <DisplayBox
-        header="Library"
-        list={library}
-        emptyMessage="Add Books to your Virtual Library"
-        ></DisplayBox>
-        <DisplayBox
-        header="Book Clubs"
-        list={clubs}
-        emptyMessage="Start or Join a Book Club"
-        ></DisplayBox>
+        <Link to="/tbrlist">
+          <DisplayBox
+            header="TBR List"
+            list={tbrList}
+            emptyMessage="Add Books to your To Be Read List"
+          ></DisplayBox>
+        </Link>
+
+        <Link to="/library">
+          <DisplayBox
+            header="Library"
+            list={library}
+            emptyMessage="Add Books to your Virtual Library"
+          ></DisplayBox>
+        </Link>
+
+        <Link to="/bookclubs">
+          <DisplayBox
+            header="Book Clubs"
+            list={clubs}
+            emptyMessage="Start or Join a Book Club"
+          ></DisplayBox>
+        </Link>
       </div>
     </div>
   );
