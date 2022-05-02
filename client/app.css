@@ -59,11 +59,15 @@ body {
 /* Small Header */
 .small-header{
   background-color: var(--desatOrange);
+  padding-left: 10px;
+  padding-bottom: 6px;
 }
 
 .title2 {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: xx-large;
+  border-bottom-width: 2px;
+  border-bottom-color: #312011;
 }
 
 .small-nav-bar {
@@ -78,6 +82,7 @@ body {
   border-bottom-width: 2px;
   border-bottom-color: white;
   font-style: italic;
+  font-size: small;
 }
 
 .small-nav:hover {
@@ -173,7 +178,6 @@ select {
   width: 45%;
 }
 
-
 .add-holder {
   width: 45%;
 }
@@ -190,6 +194,22 @@ select {
 .modal-container {
   background-color: var(--darkCyan);
   padding: 16px;
+  margin: 20px;
+  border-radius: 30px;
+  border-style: inset;
+  border-width: 6px;
+  border-color: var(--vDarkCyan);
+}
+
+.modal-title {
+  display: flex;
+  justify-content: center;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: var(--vDarkCyan);
+  font-size: x-large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: var(--dLimeGreen);
 }
 
 form {
@@ -228,7 +248,13 @@ form {
 }
 
 .bdisc {
+  display: flex;
+  justify-content: flex-start;
   height: 100px;
+}
+
+.rtitle {
+  color: var(--dLimeGreen);
 }
 
 .read-form {
