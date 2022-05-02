@@ -115,19 +115,19 @@ export const Modal = ({ addBook }) => {
                   />
                 </div>
 
-                <div>
+                <div className="search-list">
                   {searchList &&
                     searchList.map((book) => (
-                      <div key={book.volumeInfo.id} onClick={() => applyBook(book)}>
+                      <div className="search-results" key={book.volumeInfo.id} onClick={() => applyBook(book)}>
                         <div>
                           {book.volumeInfo.imageLinks &&
                             <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="" />
                           }
                         </div>
                         <div>
-                          <div>{ book.volumeInfo.title }</div>
+                          <div>Title: { book.volumeInfo.title }</div>
                           {book.volumeInfo.authors &&
-                            <div>{ book.volumeInfo.authors[0] }</div>
+                          <div>Author: { book.volumeInfo.authors[0] }</div>
                           }
                         </div>
                         
@@ -209,14 +209,18 @@ export const Modal = ({ addBook }) => {
                       </div>
                     </div>
                     
-                    <label htmlFor="rdate">Date Read:</label>
-                    <input 
-                      type="date" 
-                      id="rdate" 
-                      name="rdate" 
-                      value={bookReadDate}
-                      onChange={(e) => setBookReadDate(e.target.value)}
-                       />
+                    {bookRead &&
+                    <div className="date-holder">
+                      <label htmlFor="rdate">Date Read:</label>
+                      <input 
+                        type="date" 
+                        id="rdate" 
+                        name="rdate" 
+                        value={bookReadDate}
+                        onChange={(e) => setBookReadDate(e.target.value)}
+                          />
+                    </div>
+                    }
                   </div>
                 </form>
               </div>
@@ -224,7 +228,7 @@ export const Modal = ({ addBook }) => {
             
             <div className="modal-buttons">
               <Button>Put Back</Button>
-              <Button onClick={() => add()}>Shelve</Button>
+              <Button onClick={() => add()}>Add to Shelf</Button>
             </div>
           </div>
         </div>
