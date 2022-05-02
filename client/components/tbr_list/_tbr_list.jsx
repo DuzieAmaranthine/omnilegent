@@ -71,9 +71,12 @@ export const TbrList = () => {
     <div>
       <SmallHeader header={'TBR List'} logout={logout}></SmallHeader>
       <Modal addBook={addBook}></Modal>
-      <div className="bookshelf">
+      
+      <div className='add-button-holder'>
         <AddBook></AddBook>
+      </div>
 
+      <div className="bookshelf">
         {tbrList.length > 0 &&
           tbrList.map((book) => (
             <BookDisplay book={book}></BookDisplay>
