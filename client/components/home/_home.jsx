@@ -54,7 +54,7 @@ export const Home = () => {
     <div>
       <HomeHeader logout={ logout }></HomeHeader>
       <div className="box-holder">
-        <Link to="/tbrlist">
+        <Link className='box' to="/tbrlist">
           <DisplayBox
             header="TBR List"
             list={tbrList}
@@ -62,7 +62,7 @@ export const Home = () => {
           ></DisplayBox>
         </Link>
 
-        <Link to="/library">
+        <Link className='box' to="/library">
           <DisplayBox
             header="Library"
             list={library}
@@ -70,7 +70,7 @@ export const Home = () => {
           ></DisplayBox>
         </Link>
 
-        <Link to="/bookclubs">
+        <Link className='box' to="/bookclubs">
           <DisplayBox
             header="Book Clubs"
             list={clubs}
