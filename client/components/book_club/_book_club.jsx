@@ -53,7 +53,7 @@ export const BookClub = () => {
 
 
   return (
-    <div className='p-4'>
+    <div>
       <div className='club-container'>
         <MembersBar club={club} user={user}></MembersBar>
 

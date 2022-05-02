@@ -33,7 +33,7 @@ export const BookClubs = () => {
   }
 
   return (
-    <div className="p-4">
+    <div>
       <BcHeader logout={logout} header={'Placeholder'}></BcHeader>
     </div>
   );

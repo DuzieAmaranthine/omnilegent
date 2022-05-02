@@ -8,7 +8,6 @@ import * as crypto from 'crypto';
 import { UserRole } from '../entities/user_role.entity';
 import { ChatRoom } from '../entities/chat_room.entity';
 import { Book } from '../entities/book.entity';
-import { UserChatRoom } from '../entities/user_chatroom.entity';
 dotenv.config();
 
 export default class Seeds implements Seeder {
@@ -182,6 +181,54 @@ export default class Seeds implements Seeder {
         pages : 912,
         pubDate : '2016-02-16',
         thumbnail : 'http://books.google.com/books/content?id=GoSMCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      book7 : {
+        title : 'Secondhand Souls',
+        author : 'Christopher Moore',
+        description : 'In San Francisco, the souls of the dead are mysteriously disappearing—and you know that can’t be good—in New York Times bestselling author Christopher Moore’s delightfully funny sequel to A Dirty Job.',
+        pages : 368,
+        pubDate : '2015-08-25',
+        thumbnail : 'http://books.google.com/books/content?id=QKykBQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      book8 : {
+        title : 'Eyes Like Stars - Theatre Illuminata, Act I',
+        author : 'Lisa Mantchev',
+        description : 'All her worlds a stage.',
+        pages : 368,
+        pubDate : '2009-07-07',
+        thumbnail : 'http://books.google.com/books/content?id=ELzNTsOsJ7MC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      book9 : {
+        title : 'Silenced in the Sunflowers',
+        author : 'Dale Mayer',
+        description : 'Hearts start to heal. ... Friendships start to grow, ... just not for everyone! Doreen knows her relationship with the police captain has always been on thin ground. She has helped them solve a lot of cases, but she’s quadrupled their work and constantly gets in their way. So no one is more surprised than Doreen when the captain stops by and asks for a personal favor, concerning a cold case from his own childhood. Slowly recovering from his injury, Corporal Mack Moreau learns that the captain has stopped by Doreen’s house, asking for a moment of her time. Curious, Mack’s even more stunned to hear the details about his captain’s visit. Mack wants to help, but investigating a case from forty years ago doesn’t leave much behind to go on. Doreen knows that failing to solve a case has to happen sometime. But she’d do a lot to not have that happen here, not when the captain had personally asked for her help. So, with her critters in tow, Doreen is off and running, … leaving Mack watching—and worrying—in her wake.',
+        pages : 304,
+        pubDate : '2022-11-16',
+        thumbnail : 'http://books.google.com/books/content?id=eihXEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      book10 : {
+        title : 'My Gun is Quick',
+        author : 'Mickey Spillane',
+        description : 'The second novel in Mickey Spillane\'s classic detective series starring hard-boiled private eye Mike Hammer. When a red-headed prostitue is killed in a hit-and-run \"accident\" Mike Hammer hunts down her killers and uncovers a powerful New York prostitution ring.',
+        pages : 282,
+        pubDate : '1950-06-01',
+        thumbnail : 'http://books.google.com/books/content?id=Xe0eiO0E2gQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      book11 : {
+        title : 'The Batman Who Laughs',
+        author : 'Scott Snyder, James Tynion IV',
+        description : 'The Batman Who Laughs is enacting a sinister plan across the Multiverse-something both terrifying and oddly familiar. When Bruce Wayne realizes the only way to stop this madman is to kill him, he must consider violating the very rule Batman can’t ever break...the rule that created the Batman Who Laughs! As Bruce begins to realize that all the mistakes he’s made are somehow connected, the Batman Who Laughs unleashes a brand-new evil. Enter one of the most punishing Batmen of the Dark Multiverse: the Grim Knight! Collects THE BATMAN WHO LAUGHS #1-7 and THE BATMAN WHO LAUGHS: THE GRIM KNIGHT #1.',
+        pages : 217,
+        pubDate : '2019-09-03',
+        thumbnail : 'http://books.google.com/books/content?id=PcWrDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+      },
+      book12 : {
+        title : 'Bizenghast Manga Volume 1',
+        author : 'M. Alice LeGrow',
+        description : 'Meet Dinah, a disturbed young girl who has been sent to the small town of Bizenghast to live with her aunt following the tragic death of her parents. Dinah thinks her aunt\'s house is haunted, but her aunt thinks she has some sort of mental illness. Dinah sneaks out with her only friend, Vincent, and together they discover a lost graveyard where Dinah reads from a stone engraving. This act binds her to a contract requiring Dinah to release spirits stuck somewhere between life and the afterlife. So Dinah begins her quest of \"cleaning\" the vaults, crypts and graves of lost souls, while struggling with the haunts at home and suspicions of her growing mental illness.',
+        pages : 192,
+        pubDate : '2005-08-09',
+        thumbnail : 'http://books.google.com/books/content?id=NOLSDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
       }
     }
 
@@ -193,7 +240,7 @@ export default class Seeds implements Seeder {
     book1.pubDate = books.book1.pubDate;
     book1.thumbnail = books.book1.thumbnail;
     book1.hasRead = false;
-    book1.userId = userArray[Math.floor(Math.random() * userArray.length)].id;
+    book1.userId = user3.id;
     await bookRepository.save(book1);
     console.log(`${book1.title} by ${book1.author} is saved`);
 
@@ -205,7 +252,7 @@ export default class Seeds implements Seeder {
     book2.pubDate = books.book2.pubDate;
     book2.thumbnail = books.book2.thumbnail;
     book2.hasRead = false;
-    book2.userId = userArray[Math.floor(Math.random() * userArray.length)].id;
+    book2.userId = user3.id;
     await bookRepository.save(book2);
     console.log(`${book2.title} by ${book2.author} is saved`);
 
@@ -217,7 +264,7 @@ export default class Seeds implements Seeder {
     book3.pubDate = books.book3.pubDate;
     book3.thumbnail = books.book3.thumbnail;
     book3.hasRead = false;
-    book3.userId = userArray[Math.floor(Math.random() * userArray.length)].id;
+    book3.userId = user3.id;
     await bookRepository.save(book3);
     console.log(`${book3.title} by ${book3.author} is saved`);
 
@@ -229,7 +276,7 @@ export default class Seeds implements Seeder {
     book4.pubDate = books.book4.pubDate;
     book4.thumbnail = books.book4.thumbnail;
     book4.hasRead = false;
-    book4.userId = userArray[Math.floor(Math.random() * userArray.length)].id;
+    book4.userId = user3.id;
     await bookRepository.save(book4);
     console.log(`${book4.title} by ${book4.author} is saved`);
 
@@ -241,7 +288,7 @@ export default class Seeds implements Seeder {
     book5.pubDate = books.book5.pubDate;
     book5.thumbnail = books.book5.thumbnail;
     book5.hasRead = false;
-    book5.userId = userArray[Math.floor(Math.random() * userArray.length)].id;
+    book5.userId = user3.id;
     await bookRepository.save(book5);
     console.log(`${book5.title} by ${book5.author} is saved`);
 
@@ -253,8 +300,80 @@ export default class Seeds implements Seeder {
     book6.pubDate = books.book6.pubDate;
     book6.thumbnail = books.book6.thumbnail;
     book6.hasRead = false;
-    book6.userId = userArray[Math.floor(Math.random() * userArray.length)].id;
+    book6.userId = user3.id;
     await bookRepository.save(book6);
     console.log(`${book6.title} by ${book6.author} is saved`);
+
+    let book7 = new Book();
+    book7.title = books.book7.title;
+    book7.author = books.book7.author;
+    book7.description = books.book7.description;
+    book7.pages = books.book7.pages;
+    book7.pubDate = books.book7.pubDate;
+    book7.thumbnail = books.book7.thumbnail;
+    book7.hasRead = false;
+    book7.userId = user3.id;
+    await bookRepository.save(book7);
+    console.log(`${book7.title} by ${book7.author} is saved`);
+
+    let book8 = new Book();
+    book8.title = books.book8.title;
+    book8.author = books.book8.author;
+    book8.description = books.book8.description;
+    book8.pages = books.book8.pages;
+    book8.pubDate = books.book8.pubDate;
+    book8.thumbnail = books.book8.thumbnail;
+    book8.hasRead = false;
+    book8.userId = user3.id;
+    await bookRepository.save(book8);
+    console.log(`${book8.title} by ${book8.author} is saved`);
+
+    let book9 = new Book();
+    book9.title = books.book9.title;
+    book9.author = books.book9.author;
+    book9.description = books.book9.description;
+    book9.pages = books.book9.pages;
+    book9.pubDate = books.book9.pubDate;
+    book9.thumbnail = books.book9.thumbnail;
+    book9.hasRead = false;
+    book9.userId = user3.id;
+    await bookRepository.save(book9);
+    console.log(`${book9.title} by ${book9.author} is saved`);
+
+    let book10 = new Book();
+    book10.title = books.book10.title;
+    book10.author = books.book10.author;
+    book10.description = books.book10.description;
+    book10.pages = books.book10.pages;
+    book10.pubDate = books.book10.pubDate;
+    book10.thumbnail = books.book10.thumbnail;
+    book10.hasRead = false;
+    book10.userId = user3.id;
+    await bookRepository.save(book10);
+    console.log(`${book10.title} by ${book10.author} is saved`);
+
+    let book11 = new Book();
+    book11.title = books.book11.title;
+    book11.author = books.book11.author;
+    book11.description = books.book11.description;
+    book11.pages = books.book11.pages;
+    book11.pubDate = books.book11.pubDate;
+    book11.thumbnail = books.book11.thumbnail;
+    book11.hasRead = false;
+    book11.userId = user3.id;
+    await bookRepository.save(book11);
+    console.log(`${book11.title} by ${book11.author} is saved`);
+
+    let book12 = new Book();
+    book12.title = books.book12.title;
+    book12.author = books.book12.author;
+    book12.description = books.book12.description;
+    book12.pages = books.book12.pages;
+    book12.pubDate = books.book12.pubDate;
+    book12.thumbnail = books.book12.thumbnail;
+    book12.hasRead = false;
+    book12.userId = user3.id;
+    await bookRepository.save(book12);
+    console.log(`${book12.title} by ${book12.author} is saved`);
   }
 }
