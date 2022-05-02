@@ -122,6 +122,12 @@ body {
 
 .box-display {
   padding: 10px 15px 10px 15px;
+  max-height: 80%;
+  overflow-y: scroll;
+}
+
+.box-display::-webkit-scrollbar {
+  width: 0 !important;
 }
 
 .list-display {

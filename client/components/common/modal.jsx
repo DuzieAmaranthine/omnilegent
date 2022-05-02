@@ -6,7 +6,7 @@ export const Modal = ({ addBook }) => {
   const [currentBook, setCurrentBook] = useState(null);
   const [bookGenre, setBookGenre] = useState('');
   const [bookReadDate, setBookReadDate] = useState('');
-  const [bookRead, setBookRead] = (false);
+  const [bookRead, setBookRead] = useState(false);
 
   const search = async (query) => {
 

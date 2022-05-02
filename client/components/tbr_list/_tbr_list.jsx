@@ -68,7 +68,7 @@ export const TbrList = () => {
   }
 
   return (
-    <div className="p-4">
+    <div>
       <SmallHeader></SmallHeader>
       <Modal addBook={addBook}></Modal>
       <div className="bookshelf">
