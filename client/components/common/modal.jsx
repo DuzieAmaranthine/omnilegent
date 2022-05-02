@@ -170,7 +170,7 @@ export const Modal = ({ addBook }) => {
                     />
                   
                     <label htmlFor="bdescription">Description:</label>
-                    <input 
+                    <textarea 
                       type="text" 
                       id="bdescription" 
                       name="bdescription" 
@@ -183,7 +183,7 @@ export const Modal = ({ addBook }) => {
                   </div>
                   
                   <div className="read-form">
-                    <span>Have You Read It Yet?</span>
+                    <div className="rtitle">Have You Read It Yet?</div>
                     
                     <div className="radio-form">
                       <div className="radio-option">
