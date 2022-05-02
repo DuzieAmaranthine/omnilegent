@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '../common/button';
 
-export const Modal = ({ addBook }) => {
+export const Modal = ({ addBook, closeModal }) => {
   const [searchList, setSearchList] = useState([]);
   const [currentBook, setCurrentBook] = useState(null);
   const [bookAuthor, setBookAuthor] = useState('');
@@ -97,138 +97,140 @@ export const Modal = ({ addBook }) => {
 
   return (
     <>
-      <div className="overlay">
-        <div className="modal-container">
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-title">Add a New Book</div>
+      <div className='dark-back' onClick={closeModal}>
+        <div className="centered-modal">
+          <div className="modal-container">
+            <div className="modal" onClick={(e) => e.stopPropagation()}>
+              <div className="modal-title">Add a New Book</div>
 
-            <div className="search-form">
-              <div className="search-input">
-                <div>
-                  <label htmlFor="bsearch">Start Looking: </label>
-                  <input 
-                    type="text" 
-                    placeholder="Search..." 
-                    id="bsearch" 
-                    name="bsearch"
-                    onChange={(e) => search(e.target.value)}  
-                  />
-                </div>
+              <div className="search-form">
+                <div className="search-input">
+                  <div>
+                    <label htmlFor="bsearch">Start Looking: </label>
+                    <input 
+                      type="text" 
+                      placeholder="Search..." 
+                      id="bsearch" 
+                      name="bsearch"
+                      onChange={(e) => search(e.target.value)}  
+                    />
+                  </div>
 
-                <div className="search-list">
-                  {searchList &&
-                    searchList.map((book) => (
-                      <div className="search-results" key={book.volumeInfo.id} onClick={() => applyBook(book)}>
-                        <div>
-                          {book.volumeInfo.imageLinks &&
-                            <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="" />
-                          }
+                  <div className="search-list">
+                    {searchList &&
+                      searchList.map((book) => (
+                        <div className="search-results" key={book.volumeInfo.id} onClick={() => applyBook(book)}>
+                          <div>
+                            {book.volumeInfo.imageLinks &&
+                              <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="" />
+                            }
+                          </div>
+                          <div className="name-results">
+                            <div>Title: { book.volumeInfo.title }</div>
+                            {book.volumeInfo.authors &&
+                            <div>Author: { book.volumeInfo.authors[0] }</div>
+                            }
+                          </div>
+                          
                         </div>
-                        <div className="name-results">
-                          <div>Title: { book.volumeInfo.title }</div>
-                          {book.volumeInfo.authors &&
-                          <div>Author: { book.volumeInfo.authors[0] }</div>
-                          }
+
+                      ))}
+                  </div>
+                </div>
+                
+                <div className="book-form">
+                  <form>
+                    <div className="input-fields">
+                      <label htmlFor="btitle">Title:</label>
+                      <input 
+                        type="text" 
+                        id="btitle" 
+                        name="btitle"
+                        value={bookTitle}
+                        onChange={(e) => setBookTitle(e.target.value)} 
+                      />
+
+                      <label htmlFor="bauthor">Author:</label>
+                      <input 
+                        type="text" 
+                        id="bauthor" 
+                        name="bauthor" 
+                        value={bookAuthor}
+                        onChange={(e) => setBookAuthor(e.target.value)}
+                      />
+                        
+
+                      <label htmlFor="bgenre">Genre:</label>
+                      <input 
+                        type="text" 
+                        id="bgenre" 
+                        name="bgenre"
+                        value={bookGenre}
+                        onChange={(e) => setBookGenre(e.target.value)}
+  
+                      />
+                    
+                      <label htmlFor="bdescription">Description:</label>
+                      <textarea 
+                        type="text" 
+                        id="bdescription" 
+                        name="bdescription" 
+                        className="bdisc"
+                        value={bookDesc}
+                        onChange={(e) => setBookDesc(e.target.value)}
+  
+                      />
+                    
+                    </div>
+                    
+                    <div className="read-form">
+                      <div className="rtitle">Have You Read It Yet?</div>
+                      
+                      <div className="radio-form">
+                        <div className="radio-option">
+                          <label htmlFor="hasRead">Yes</label>
+                          <input 
+                            type="radio" 
+                            id="hasRead" 
+                            name="has_read" 
+                            value="Yes"
+                            onChange={() => setBookRead(true)} 
+                            />
                         </div>
                         
+                        <div className="radio-option">
+                          <label htmlFor="hasNotRead">No</label>
+                          <input 
+                            type="radio" 
+                            id="hasNotRead" 
+                            name="has_read" 
+                            value="No"
+                            onChange={() => setBookRead(false)} 
+                          />
+                        </div>
                       </div>
-
-                    ))}
+                      
+                      {bookRead &&
+                      <div className="date-holder">
+                        <label htmlFor="rdate">Date Read:</label>
+                        <input 
+                          type="date" 
+                          id="rdate" 
+                          name="rdate" 
+                          value={bookReadDate}
+                          onChange={(e) => setBookReadDate(e.target.value)}
+                            />
+                      </div>
+                      }
+                    </div>
+                  </form>
                 </div>
               </div>
               
-              <div className="book-form">
-                <form>
-                  <div className="input-fields">
-                    <label htmlFor="btitle">Title:</label>
-                    <input 
-                      type="text" 
-                      id="btitle" 
-                      name="btitle"
-                      value={bookTitle}
-                      onChange={(e) => setBookTitle(e.target.value)} 
-                    />
-
-                    <label htmlFor="bauthor">Author:</label>
-                    <input 
-                      type="text" 
-                      id="bauthor" 
-                      name="bauthor" 
-                      value={bookAuthor}
-                      onChange={(e) => setBookAuthor(e.target.value)}
-                    />
-                      
-
-                    <label htmlFor="bgenre">Genre:</label>
-                    <input 
-                      type="text" 
-                      id="bgenre" 
-                      name="bgenre"
-                      value={bookGenre}
-                      onChange={(e) => setBookGenre(e.target.value)}
- 
-                    />
-                  
-                    <label htmlFor="bdescription">Description:</label>
-                    <textarea 
-                      type="text" 
-                      id="bdescription" 
-                      name="bdescription" 
-                      className="bdisc"
-                      value={bookDesc}
-                      onChange={(e) => setBookDesc(e.target.value)}
- 
-                    />
-                  
-                  </div>
-                  
-                  <div className="read-form">
-                    <div className="rtitle">Have You Read It Yet?</div>
-                    
-                    <div className="radio-form">
-                      <div className="radio-option">
-                        <label htmlFor="hasRead">Yes</label>
-                        <input 
-                          type="radio" 
-                          id="hasRead" 
-                          name="has_read" 
-                          value="Yes"
-                          onChange={() => setBookRead(true)} 
-                          />
-                      </div>
-                      
-                      <div className="radio-option">
-                        <label htmlFor="hasNotRead">No</label>
-                        <input 
-                          type="radio" 
-                          id="hasNotRead" 
-                          name="has_read" 
-                          value="No"
-                          onChange={() => setBookRead(false)} 
-                        />
-                      </div>
-                    </div>
-                    
-                    {bookRead &&
-                    <div className="date-holder">
-                      <label htmlFor="rdate">Date Read:</label>
-                      <input 
-                        type="date" 
-                        id="rdate" 
-                        name="rdate" 
-                        value={bookReadDate}
-                        onChange={(e) => setBookReadDate(e.target.value)}
-                          />
-                    </div>
-                    }
-                  </div>
-                </form>
+              <div className="modal-buttons">
+                <Button onClick={closeModal}>Put Back</Button>
+                <Button onClick={() => add()}>Add to Shelf</Button>
               </div>
-            </div>
-            
-            <div className="modal-buttons">
-              <Button>Put Back</Button>
-              <Button onClick={() => add()}>Add to Shelf</Button>
             </div>
           </div>
         </div>

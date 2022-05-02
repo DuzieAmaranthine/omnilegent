@@ -18,6 +18,7 @@ export const Library = () => {
   const [library, setLibrary] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(async () => {
     const res = await api.get('/users/me');
@@ -58,16 +59,20 @@ export const Library = () => {
   }
   return (
     <div>
-      <SmallHeader header="My Library" logout={logout}></SmallHeader>
-      <Modal addBook={addBook}></Modal>
-      <div className="bookshelf">
-        <AddBook></AddBook>
+      {openModal && <Modal addBook={addBook} closeModal={() => setOpenModal(false)}></Modal>}
+      <div>
+        <SmallHeader header="My Library" logout={logout}></SmallHeader>
+        <div className="bookshelf">
+          <AddBook open={() => setOpenModal(true)}></AddBook>
 
-        {library.length > 0 &&
-          library.map((book) => (
-            <BookDisplay book={book}></BookDisplay>
-          ))}
+          {library.length > 0 &&
+            library.map((book) => (
+              <BookDisplay book={book}></BookDisplay>
+            ))}
+        </div>
+
       </div>
+      
       
     </div>
 

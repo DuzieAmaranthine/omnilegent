@@ -16,9 +16,10 @@ export const TbrList = () => {
   const navigate = useNavigate();
 
   const [tbrList, setTbrList] = useState([[]]);
-
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+
   useEffect(async () => {
     const res = await api.get('/users/me');
     const bookList = await api.get('/books_to_read');
@@ -69,16 +70,20 @@ export const TbrList = () => {
 
   return (
     <div>
-      <SmallHeader header={'TBR List'} logout={logout}></SmallHeader>
-      <Modal addBook={addBook}></Modal>
-      <div className="bookshelf">
-        <AddBook></AddBook>
+        {openModal && <Modal addBook={addBook} closeModal={() => setOpenModal(false)}></Modal>}
+      <div>
+        <SmallHeader header={'TBR List'} logout={logout}></SmallHeader>
+        <div className="bookshelf">
+          <AddBook open={() => setOpenModal(true)}></AddBook>
 
-        {tbrList.length > 0 &&
-          tbrList.map((book) => (
-            <BookDisplay book={book}></BookDisplay>
-          ))}
+          {tbrList.length > 0 &&
+            tbrList.map((book) => (
+              <BookDisplay key={book.id} book={book}></BookDisplay>
+            ))}
+        </div>
+
       </div>
+    
     </div>
   );
 };

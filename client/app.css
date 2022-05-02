@@ -207,7 +207,25 @@ select {
 
 
 /* Modal */
+.dark-back {
+  background-color: rgb(0, 0, 0, .6);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+.centered-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .modal-container {
+  z-index: 10;
   background-color: var(--darkCyan);
   padding: 16px;
   margin: 20px;
