@@ -4,34 +4,73 @@ import { Button } from '../common/button';
 export const Modal = ({ addBook }) => {
   const [searchList, setSearchList] = useState([]);
   const [currentBook, setCurrentBook] = useState(null);
+  const [bookAuthor, setBookAuthor] = useState('');
+  const [bookTitle, setBookTitle] = useState('');
+  const [bookDesc, setBookDesc] = useState('');
   const [bookGenre, setBookGenre] = useState('');
   const [bookReadDate, setBookReadDate] = useState('');
-  const [bookRead, setBookRead] = (false);
+  const [bookRead, setBookRead] = useState(false);
 
   const search = async (query) => {
 
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=50&`
+    if (query === '') {
+      return;
+    }
+
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&maxResults=10&`;
 
     fetch(url)
       .then(response => response.json())
-      .then(data = setSearchList(data.items));
+      .then(data => setSearchList(data.items));
   }
 
   const applyBook = async (book) => {
+    console.log(book);
 
     let selectedBook = {
       title : book.volumeInfo.title,
-      author : book.volumeInfo.author[0],
+      author : book.volumeInfo.authors[0],
       description : book.volumeInfo.description,
       pages : book.volumeInfo.pageCount,
       pubDate : book.volumeInfo.publishedDate,
       thumbnail : book.volumeInfo.imageLinks.thumbnail,
     }
+    setBookAuthor(selectedBook.author);
+    setBookDesc(selectedBook.description);
+    setBookTitle(selectedBook.title);
     setCurrentBook(selectedBook)
   }
 
   const add = async () => {
+
     if (!currentBook) {
+      if (bookTitle === '' || bookAuthor === '') {
+        return;
+      }
+
+      let newBook = {
+        title : bookTitle,
+        author : bookAuthor,
+        description : bookDesc,
+        pages : 0,
+        pubDate : '',
+        thumbnail : '',
+        hasRead : bookRead,
+      }
+
+      if (bookRead) {
+        newBook.dateRead = bookReadDate;
+      }
+      addBook(newBook);
+
+      setCurrentBook(null);
+      setBookAuthor('');
+      setBookTitle('');
+      setBookDesc('');
+      setBookGenre('');
+      setBookRead(false);
+      setBookReadDate('');
+
       return;
     }
 
@@ -46,6 +85,9 @@ export const Modal = ({ addBook }) => {
     addBook(newBook);
 
     setCurrentBook(null);
+    setBookAuthor('');
+    setBookTitle('');
+    setBookDesc('');
     setBookGenre('');
     setBookRead(false);
     setBookReadDate('');
@@ -63,48 +105,76 @@ export const Modal = ({ addBook }) => {
             <div className="search-form">
               <div className="search-input">
                 <form>
-                  <label for="bsearch">Start Looking: </label>
-                  <input type="search" placeholder="Search..." id="bsearch" name="bsearch" />
+                  <label htmlFor="bsearch">Start Looking: </label>
+                  <input 
+                    type="search" 
+                    placeholder="Search..." 
+                    id="bsearch" 
+                    name="bsearch"
+                    onChange={(e) => search(e.target.value)}  
+                  />
                 </form>
+
+                <div>
+                  {searchList &&
+                    searchList.map((book) => (
+                      <div onClick={() => applyBook(book)}>
+                        <div>
+                          {book.volumeInfo.imageLinks &&
+                            <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="" />
+                          }
+                        </div>
+                        <div>
+                          <div>{ book.volumeInfo.title }</div>
+                          <div>{ book.volumeInfo.authors[0] }</div>
+                        </div>
+                        
+                      </div>
+
+                    ))}
+                </div>
               </div>
               
               <div className="book-form">
                 <form>
                   <div className="input-fields">
-                    <label for="btitle">Title:</label>
+                    <label htmlFor="btitle">Title:</label>
                     <input 
                       type="text" 
                       id="btitle" 
                       name="btitle"
-                      value={currentBook ? currentBook.title : ''} 
+                      value={bookTitle}
+                      onChange={(e) => setBookTitle(e.target.value)} 
                     />
 
-                    <label for="bauthor">Author:</label>
+                    <label htmlFor="bauthor">Author:</label>
                     <input 
                       type="text" 
                       id="bauthor" 
                       name="bauthor" 
-                      value={currentBook ? currentBook.author : ''}
+                      value={bookAuthor}
+                      onChange={(e) => setBookAuthor(e.target.value)}
                     />
                       
 
-                    <label for="bgenre">Genre:</label>
+                    <label htmlFor="bgenre">Genre:</label>
                     <input 
                       type="text" 
                       id="bgenre" 
                       name="bgenre"
                       value={bookGenre}
-                      onChange={(e) => setBookGenre(e.target.valu)}
+                      onChange={(e) => setBookGenre(e.target.value)}
  
                     />
                   
-                    <label for="bdescription">Description:</label>
+                    <label htmlFor="bdescription">Description:</label>
                     <input 
                       type="text" 
                       id="bdescription" 
                       name="bdescription" 
                       className="bdisc"
-                      value={currentBook ? currentBook.description : ''}
+                      value={bookDesc}
+                      onChange={(e) => setBookDesc(e.target.value)}
  
                     />
                   
@@ -115,7 +185,7 @@ export const Modal = ({ addBook }) => {
                     
                     <div className="radio-form">
                       <div className="radio-option">
-                        <label for="hasRead">Yes</label>
+                        <label htmlFor="hasRead">Yes</label>
                         <input 
                           type="radio" 
                           id="hasRead" 
@@ -126,7 +196,7 @@ export const Modal = ({ addBook }) => {
                       </div>
                       
                       <div className="radio-option">
-                        <label for="hasNotRead">No</label>
+                        <label htmlFor="hasNotRead">No</label>
                         <input 
                           type="radio" 
                           id="hasNotRead" 
@@ -137,7 +207,7 @@ export const Modal = ({ addBook }) => {
                       </div>
                     </div>
                     
-                    <label for="rdate">Date Read:</label>
+                    <label htmlFor="rdate">Date Read:</label>
                     <input 
                       type="date" 
                       id="rdate" 
@@ -152,7 +222,7 @@ export const Modal = ({ addBook }) => {
             
             <div className="modal-buttons">
               <Button>Put Back</Button>
-              <Button>Shelve</Button>
+              <Button onClick={() => add()}>Shelve</Button>
             </div>
           </div>
         </div>
