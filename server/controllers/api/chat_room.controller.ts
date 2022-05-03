@@ -35,7 +35,15 @@ export class ChatroomController {
 
   @Get('/current_rooms')
   public async current(@JwtBody() jwtBody : JwtBodyDto) {
-    return this.chatroomsService.findAllForUser(jwtBody.userId);
+    const rooms = await this.chatroomsService.findAllForUser(jwtBody.userId);
+    return { rooms };
+  }
+
+  @Get('/available_rooms')
+  public async available(@JwtBody() jwtBody : JwtBodyDto) {
+    const rooms = await this.chatroomsService.findAvailableRooms(jwtBody.userId);
+
+    return { rooms };
   }
 
   @Get('/club_members/:id')
@@ -84,7 +92,8 @@ export class ChatroomController {
     newUserChat.chatRoomId = parseInt(id, 10);
     const createdUserChat = await this.chatroomsService.createUserChatRoom(newUserChat);
 
-    return { createdUserChat };
+    const room = await this.chatroomsService.findChatRoomById(parseInt(id, 10));
+    return { room };
   }
 
   @Delete('/chat_rooms/:id')
