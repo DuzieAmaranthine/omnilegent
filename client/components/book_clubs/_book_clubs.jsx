@@ -22,7 +22,7 @@ export const BookClubs = () => {
   useEffect(async () => {
     const res = await api.get('/users/me');
     const allClubs = await api.get('/available_rooms');
-    const joinedClubs = await api.get('/chat_rooms/user');
+    const joinedClubs = await api.get('/current_rooms');
 
     setClubs(allClubs.rooms);
     setMyClubs(joinedClubs.rooms);

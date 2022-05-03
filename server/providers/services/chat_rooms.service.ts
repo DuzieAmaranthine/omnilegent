@@ -26,7 +26,7 @@ export class ChatRoomsService {
   }
 
   findAvailableRooms(userId : number) : Promise<UserChatRoom[]> {
-    return this.userChatRoomRepository.find({relations : ['chatRoom'], where : {userId : !userId}});
+    return this.userChatRoomRepository.find({relations : ['chatRoom'], where : {userId : userId}});
   }
 
   findMembersForClub(id : number) : Promise<UserChatRoom[]> {
