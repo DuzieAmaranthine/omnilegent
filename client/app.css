@@ -629,7 +629,7 @@ textarea {
   background-color: #1a3b2b;
   display: flex;
   flex-direction: column;
-  height: 8vh;
+  min-height: 8vh;
   width: 100vw;
 }
 
@@ -654,6 +654,8 @@ textarea {
   margin-left: 12px;
   margin-top: 10px;
   text-decoration: none;
+  width: 20%;
+  height: 100%;
 }
 
 .c-subsubtitle {
@@ -712,8 +714,8 @@ textarea {
   flex-direction: column;
   padding-left: 8px;
   padding-right: 8px;
-  padding-top: 8vh;
-  min-width: 9vw;
+  padding-top: 96px;
+  min-width: 96px;
   overflow-y: scroll;
 }
 

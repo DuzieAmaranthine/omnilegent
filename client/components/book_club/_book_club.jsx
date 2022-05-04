@@ -75,7 +75,7 @@ export const BookClub = () => {
 
               messages.map((message) => (
                 <MessageBox
-                  key={Math.random().toString().substring(2, 8)} 
+                  key={message.id}
                   contents={message.contents} 
                   user={message.userName} 
                   currentUser={user}
