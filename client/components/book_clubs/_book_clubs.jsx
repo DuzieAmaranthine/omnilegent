@@ -33,12 +33,6 @@ export const BookClubs = () => {
     setLoading(false);
   }, []);
 
-  useEffect(async () => {
-    const set = clubs.filter((room) => !myClubs.includes(room));
-    setClubs(set);
-    console.log(set);
-  },[loading]);
-
   const createRoom = async (room) => {
     const newRoom = await api.post('/chat_rooms', room);
     setMyClubs([...myClubs, newRoom.newRoom]);
@@ -58,9 +52,15 @@ export const BookClubs = () => {
   };
 
   const joinRoom = async (roomId) => {
+
+    for (let i = 0; i < myClubs.length; i++) {
+      if (roomId === myClubs[i].id) {
+        return;
+      }
+    }
     const room = await api.post(`/join_room/${roomId}`);
 
-    setMyClubs([...myClubs, room]);
+    setMyClubs([...myClubs, room.room]);
     setClubs(clubs.filter((rooms) => rooms.id !== room.id));
 
     return;

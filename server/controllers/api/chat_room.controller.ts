@@ -36,8 +36,12 @@ export class ChatroomController {
 
   @Get('/current_rooms')
   public async current(@JwtBody() jwtBody : JwtBodyDto) {
-    const rooms = await this.chatroomsService.findAllForUser(jwtBody.userId);
-    console.log(rooms.filter((room) => room.chatRoom));
+    const clubs = await this.chatroomsService.findAllForUser(jwtBody.userId);
+    const rooms = [];
+    
+    for (let i = 0; i < clubs.length; i++) {
+      rooms.push(clubs[i].chatRoom);
+    }
     
     return { rooms };
   }
