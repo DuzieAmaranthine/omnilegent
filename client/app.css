@@ -249,6 +249,7 @@ select {
 .info-display {
   max-height: 30vh;
   overflow-y: auto;
+  scrollbar-width: none;
 }
 
 .info-display::-webkit-scrollbar {
@@ -727,6 +728,7 @@ textarea {
   padding-top: 96px;
   min-width: 96px;
   overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .member-bar::-webkit-scrollbar {
