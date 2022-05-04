@@ -334,13 +334,14 @@ select {
 /* Add Book Modal */
 .dark-back {
   background-color: rgb(0, 0, 0, .6);
-  width: 100vw;
-  height: 100vh;
+  width: 97.5vw;
+  height: 120vh;
   z-index: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
+  overflow: hidden;
 }
 
 .centered-modal {
