@@ -133,6 +133,12 @@ body {
   margin: 16px;
   width: 30%;
   height: 68vh;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.box::-webkit-scrollbar {
+  width: 0 !important;
 }
 
 @media (max-width: 768px) {
@@ -161,6 +167,7 @@ body {
   padding: 10px 15px 10px 15px;
   max-height: 85%;
   overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .box-display::-webkit-scrollbar {
@@ -603,6 +610,7 @@ textarea {
   padding: 10px 15px 10px 15px;
   max-height: 85%;
   overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .bc-box-display::-webkit-scrollbar {
