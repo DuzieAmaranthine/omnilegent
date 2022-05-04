@@ -169,10 +169,17 @@ body {
 .list-display {
   margin-bottom: 4px;
   border-bottom-width: 1px;
+  display: flex;
+  flex-direction: column;
 }
 
 .list-display:hover {
   background-color: #fafafa;
+}
+
+.list-display img {
+  max-height: 12%;
+  max-width: 9%;
 }
 
 .sort-box {

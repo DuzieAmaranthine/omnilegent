@@ -6,6 +6,8 @@ import { RolesContext } from '../../utils/roles_context';
 import { BcHeader } from './bcHeader';
 import { ClubBox } from './clubBox';
 import { DisplayBox } from '../common/displayBox';
+import { BcModal } from './bcModal';
+import { AddClub } from './add_club';
 
 export const BookClubs = () => {
   const [, setAuthToken] = useContext(AuthContext);
@@ -89,11 +91,14 @@ export const BookClubs = () => {
 
   return (
     <div>
-        {openModal && <BcModal addClub={addClub} closeModal={() => setOpenModal(false)}></BcModal>}
+        {openModal && <BcModal addClub={createRoom} closeModal={() => setOpenModal(false)}></BcModal>}
       <div>
         <BcHeader header={'Book Clubs'} logout={logout}></BcHeader>
+        <div className='add-button-holder'>
+          <AddClub open={() => setOpenModal(true)}></AddClub>
+        </div>
         <div>
-          
+
         </div>
         <div className="box-holder">
           <div className="bc-box">
