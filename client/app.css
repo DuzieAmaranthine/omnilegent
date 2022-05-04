@@ -167,6 +167,11 @@ body {
   width: 0 !important;
 }
 
+.box-display {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .list-display {
   margin-bottom: 4px;
   border-bottom-width: 1px;
@@ -246,6 +251,11 @@ select {
 
 .info-display::-webkit-scrollbar {
   width: 0 !important;
+}
+
+.info-display {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 
@@ -416,6 +426,11 @@ form {
 
 .search-list::-webkit-scrollbar {
   width: 0 !important;
+}
+
+.search-list {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .search-results {
@@ -609,6 +624,11 @@ textarea {
   width: 0 !important;
 }
 
+.bc-box-display {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .book-club-title {
   font-size: large;
 }
@@ -723,6 +743,16 @@ textarea {
 
 .member-bar::-webkit-scrollbar {
   width: 0 !important;
+}
+
+.member-bar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.member-bar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 .chat-containter {
