@@ -49,7 +49,6 @@ export class ChatroomController {
   @Get('/available_rooms')
   public async available(@JwtBody() jwtBody : JwtBodyDto) {
     const rooms = await this.chatroomsService.findAvailableRooms(jwtBody.userId);
-    
 
     return { rooms };
   }

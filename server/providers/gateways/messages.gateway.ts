@@ -34,11 +34,19 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
   async handleConnection(client : any, ...args : any[]) {
     try {
       const jwt = client.handshake.auth.token;
+      console.log(jwt);
+      
       this.jwtService.parseToken(jwt);
+      console.log("HERE");
+      
       client.join(client.handshake.query.chatRoomId as unknown as string);
-      console.log('Client Connected');
-      const messages = await this.messagesService.findAllForRoom(client.handshake.query.chatRoomId);
-      client.emit('initial-messages', messages);
+      console.log('JOIN');
+      // const messages = await this.messagesService.findAllForRoom(client.handshake.query.chatRoomId);
+      // console.log('MESSAGES');
+      
+      // client.emit('initial-messages', messages);
+      // console.log("END");
+      
     } 
     catch (e) {
       throw new WsException('Invalid Token');
@@ -59,7 +67,7 @@ export class MessagesGateway implements OnGatewayConnection, OnGatewayDisconnect
     message.contents = payload.contents;
     message.userName = payload.userName;
     message.chatRoomId = parseInt(client.handshake.query.chatRoomId as unknown as string, 10);
-    message = await this.messagesService.createMessage(message);
+    // message = await this.messagesService.createMessage(message);
     this.server.to(`${message.chatRoomId}`).emit('message', message);
   }
 }

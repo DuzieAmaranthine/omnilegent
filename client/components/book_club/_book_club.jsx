@@ -1,3 +1,4 @@
+import { set } from 'lodash';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
@@ -23,13 +24,15 @@ export const BookClub = () => {
   const [messages, sendMessages] = useMessages(club);
 
   useEffect(async () => {
-    const res = await api.get('/users/me');
+    setLoading(true);
+    if (!user) {
+      const { user } = await api.get('/users/me');
+      setUser(user)
+    }
     const club = await api.get(`/chat_rooms/${id}`);
-
-    setUser(res.user);
     setClub(club.room);
     setLoading(false);
-  }, []);
+  }, [id]);
 
   const logout = async () => {
     const res = await api.del('/sessions');

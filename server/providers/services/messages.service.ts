@@ -7,13 +7,19 @@ import { Message } from "../../entities/message.entity";
 export class MessagesService {
   constructor(
     @InjectRepository(Message)
-    private messagesRepository : Repository<Message>,
+    private readonly messagesRepository : Repository<Message>,
   ) {}
 
   findAllForRoom(id : number): Promise<Message[]> {
-    return this.messagesRepository.find({
+    console.log("IN SERVICE");
+    
+    const mess = this.messagesRepository.find({
       where : { chatRoomId : id, },
     });
+
+    console.log(mess);
+    return mess;
+    
   }
 
   async createMessage(message : Message): Promise<Message> {
