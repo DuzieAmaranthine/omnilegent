@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
-import { SmallHeader } from '../common/smallHeader';
+import { TbrHeader } from '../common/tbrHeader';
 import { BookDisplay } from '../common/bookDisplay';
 import { AddBook } from '../common/addBook';
 import { Modal } from '../common/modal';
@@ -72,7 +72,7 @@ export const TbrList = () => {
     <div>
         {openModal && <Modal addBook={addBook} closeModal={() => setOpenModal(false)}></Modal>}
       <div>
-        <SmallHeader header={'TBR List'} logout={logout}></SmallHeader>
+        <TbrHeader header={'TBR List'} logout={logout}></TbrHeader>
 
         <div className='add-button-holder'>
           <AddBook open={() => setOpenModal(true)}></AddBook>
@@ -84,6 +84,7 @@ export const TbrList = () => {
               <BookDisplay key={book.id} book={book}></BookDisplay>
             ))}
         </div>
+
       </div>
     </div>
   );

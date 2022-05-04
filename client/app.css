@@ -72,28 +72,28 @@ body {
 
 
 
-/* Small Header */
-.small-header{
+/* Tbr Header */
+.tbr-header{
   background-color: var(--desatOrange);
   padding-left: 10px;
   padding-bottom: 6px;
 }
 
-.title2 {
+.tbr-title {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: xx-large;
   border-bottom-width: 2px;
   border-bottom-color: #312011;
 }
 
-.small-nav-bar {
+.tbr-nav-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   background-color: white;
 }
 
-.small-nav {
+.tbr-nav {
   padding: 5px 10px 5px 10px;
   border-bottom-width: 2px;
   border-bottom-color: white;
@@ -101,7 +101,7 @@ body {
   font-size: small;
 }
 
-.small-nav:hover {
+.tbr-nav:hover {
   border-bottom-color: #1a3b2b;
   border-bottom-width: 2px;
 }
@@ -199,6 +199,7 @@ select {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .book-display {
@@ -209,11 +210,9 @@ select {
   padding-bottom: 8px;
   margin: 8px;
   width: 45%;
-  
 }
 
 .thumb-display {
-  width: 100%;
   margin-right: 8px;
   float: left;
 }
@@ -229,7 +228,92 @@ select {
 
 
 
-/* Modal */
+/* TBR List */
+
+.tbr-button-holder {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+
+.book-delete {
+  color: white;
+  background-color: var(--dLimeGreen);
+  font-size: medium;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.book-delete:hover {
+  background-color: var(--darkCyan);
+}
+
+.tbr-to-read {
+  color: white;
+  background-color: var(--darkCyan);
+  font-size: medium;
+  padding: 4px;
+  border-radius: 12px;
+}
+
+.tbr-to-read:hover {
+  background-color: var(--vDarkCyan);
+}
+
+
+/* Library Header */
+.lib-header{
+  background-color: var(--desatOrange);
+  padding-left: 10px;
+  padding-bottom: 6px;
+}
+
+.lib-title {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: xx-large;
+  border-bottom-width: 2px;
+  border-bottom-color: #312011;
+}
+
+.lib-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: white;
+}
+
+.lib-nav {
+  padding: 5px 10px 5px 10px;
+  border-bottom-width: 2px;
+  border-bottom-color: white;
+  font-style: italic;
+  font-size: small;
+}
+
+.lib-nav:hover {
+  border-bottom-color: #1a3b2b;
+  border-bottom-width: 2px;
+}
+
+
+
+/* My Library */
+.library-button-holder {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.date-read {
+  font-size: xx-small;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly
+}
+
+
+
+/* Add Book Modal */
 .dark-back {
   background-color: rgb(0, 0, 0, .6);
   width: 100vw;
@@ -301,8 +385,11 @@ form {
 .search-list {
   display: flex;
   flex-direction: column;
-  margin: 8px;
-  overflow-y: auto;
+  position: fixed;
+  width: 40%;
+  margin-top: 60px;
+  max-height: 65%;
+  overflow: scroll;
 }
 
 .search-list::-webkit-scrollbar {
@@ -386,6 +473,10 @@ textarea {
 
 
 
+/* Book Club Modal */
+
+
+
 /* Book Clubs */
 .bc-header {
   background-color: #1a3b2b;
@@ -423,6 +514,8 @@ textarea {
   color: white;
   margin-left: 28px;
 }
+
+
 /* Book Club */
 .chat-button {
   width: 60px;

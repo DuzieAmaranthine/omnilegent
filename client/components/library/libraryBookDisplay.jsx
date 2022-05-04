@@ -1,14 +1,15 @@
-export const BookDisplay =({ book }) => {
+export const LibraryBookDisplay =({ book }) => {
 
   return(
     <div className="book-display">
       <div className="book-info-holder">
         <div className="thumb-display">
           {book.thumbnail && <img src={book.thumbnail} alt=''/>}
-          {book.hasRead === true && <div>{book.dateRead}</div>}
-          <div className="tbr-button-holder">
+          <div className="date-read">Date Read: 
+            {book.hasRead === true && <div>{book.dateRead}</div>}
+          </div>
+          <div className="library-button-holder">
             <button className="book-delete">Delete</button>
-            <button className="tbr-to-read">Finished</button>
           </div>
         </div>
         <div className="info-display">
