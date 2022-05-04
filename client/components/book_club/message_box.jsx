@@ -5,9 +5,9 @@ export const MessageBox = ({contents, user, currentUser}) => {
       <div className="message-display">
         <div className="user-display">
           <div className="un">
-            {user} Username
+            {user}
           </div>
-          said: 
+          said:
         </div>
         {contents}
       </div>

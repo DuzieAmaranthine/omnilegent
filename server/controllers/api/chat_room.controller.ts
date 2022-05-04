@@ -125,12 +125,7 @@ export class ChatroomController {
 
   @Delete('/quit_room/:id')
   public async quit(@Param('id') id : string, @JwtBody() jwtBody : JwtBodyDto) {
-    const targetUserChat = await this.chatroomsService.findUserChatRoom(parseInt(id, 10));
-
-    if (targetUserChat.userId !== jwtBody.userId) {
-      return {'error' : 'Unauthorized'};
-    }
-
+    const targetUserChat = await this.chatroomsService.findUserChatRoom(parseInt(id, 10), jwtBody.userId);
     await this.chatroomsService.deleteUserChatRoom(targetUserChat);
     return {'success' : 'User left the room'};
   }

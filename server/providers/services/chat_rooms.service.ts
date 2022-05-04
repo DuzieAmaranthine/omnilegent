@@ -53,7 +53,7 @@ export class ChatRoomsService {
     return this.userChatRoomRepository.delete(userChatRoom);
   }
 
-  findUserChatRoom(id : number) {
-    return this.userChatRoomRepository.findOne(id);
+  findUserChatRoom(chatId : number, userId : number) {
+    return this.userChatRoomRepository.findOne({where : {chatRoomId : chatId, userId : userId}});
   }
 }

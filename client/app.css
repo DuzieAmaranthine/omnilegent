@@ -670,6 +670,7 @@ textarea {
   flex-direction: row;
   height: 100vh;
   width: 100vw;
+  min-width: 980px;
   overflow: hidden;
 }
 
@@ -680,6 +681,12 @@ textarea {
   padding-left: 8px;
   padding-right: 8px;
   padding-top: 8vh;
+  min-width: 9vw;
+  overflow-y: scroll;
+}
+
+.member-bar::-webkit-scrollbar {
+  width: 0 !important;
 }
 
 .chat-containter {

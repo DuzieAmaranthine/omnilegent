@@ -16,7 +16,6 @@ export const MembersBar = ({club, user}) => {
 
   const getMemberIcon = (member) => {
     const memberSplit = member.split(' ');
-    console.log(memberSplit);
 
     if (memberSplit.length === 1) {
       return (memberSplit[0][0] + memberSplit[0][1]).toUpperCase();
