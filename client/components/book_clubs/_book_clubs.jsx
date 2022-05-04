@@ -92,16 +92,12 @@ export const BookClubs = () => {
   return (
     <div>
         {openModal && <BcModal addClub={createRoom} closeModal={() => setOpenModal(false)}></BcModal>}
-      <div>
         <BcHeader header={'Book Clubs'} logout={logout}></BcHeader>
         <div className='add-button-holder'>
           <AddClub open={() => setOpenModal(true)}></AddClub>
         </div>
-        <div>
-
-        </div>
         <div className="box-holder">
-          <div className="bc-box">
+          <div className="box">
             <ClubBox
             joined={true}
             quitRoom={quitRoom}
@@ -109,7 +105,7 @@ export const BookClubs = () => {
             ></ClubBox>
           </div>
 
-          <div className="bc-box">
+          <div className="box">
             <ClubBox
               joined={false}
               joinRoom={joinRoom}
@@ -117,7 +113,6 @@ export const BookClubs = () => {
               ></ClubBox>
           </div>
         </div>
-      </div>
     </div>
   );
 };

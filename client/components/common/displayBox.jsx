@@ -19,7 +19,7 @@ export const DisplayBox =({ header, list, emptyMessage }) => {
             {list.map((item) => (
               <div key={item.id} className="list-display">                  
                 <div className="title-author">
-                  <div>{item.title} by: {item.author}</div>
+                  <div>{item.title} {item.author ? `by: ${item.author}` : ''}</div>
                 </div>
               </div>
             ))}
