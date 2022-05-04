@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
-import { BcHeader } from '../common/bcHeader';
-import { ClubBox } from './club_box';
+import { BcHeader } from './bcHeader';
+import { ClubBox } from './clubBox';
 import { DisplayBox } from '../common/displayBox';
 
 export const BookClubs = () => {
@@ -89,21 +89,19 @@ export const BookClubs = () => {
 
   return (
     <div>
-      <BcHeader logout={logout} header={'My Book Clubs'}></BcHeader>
-      <div className='box-holder'>
+      <BcHeader header={'Book Clubs'} logout={logout}></BcHeader>
+      <div className="box-holder">
         <ClubBox
-          joined={true}
-          quitRoom={quitRoom}
-          roomList={myClubs}
+        joined={true}
+        quitRoom={quitRoom}
+        roomList={myClubs}
         ></ClubBox>
 
         <ClubBox
-          joined={false}
-          joinRoom={joinRoom}
-          roomList={clubs}
+        joined={false}
+        joinRoom={joinRoom}
+        roomList={clubs}
         ></ClubBox>
-
-
       </div>
     </div>
   );

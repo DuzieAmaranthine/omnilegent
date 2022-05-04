@@ -1,7 +1,7 @@
 export const DisplayBox =({ header, list, emptyMessage }) => {
 
   return(
-    <div >
+    <div>
       <div className="box-title">
         <span>{ header }</span>
       </div>

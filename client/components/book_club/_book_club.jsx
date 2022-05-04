@@ -4,7 +4,7 @@ import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
 import { useMessages } from '../../utils/use_message';
-import { BcHeader } from '../common/bcHeader';
+import { ChatHeader } from './chatHeader';
 import { MembersBar } from './members_bar';
 import { MessageBox } from './message_box';
 
@@ -58,12 +58,12 @@ export const BookClub = () => {
         <MembersBar club={club} user={user}></MembersBar>
 
         <div className='chat-container'>
-          <BcHeader 
+          <ChatHeader 
             logout={logout} 
             header={club.title} 
             topic={club.currentTopic ? club.currentTopic : null} 
             meeting={ club.meetingTime ? club.meetingTime : null}
-          ></BcHeader>
+          ></ChatHeader>
 
           <div className='messages-container'>
             {messages.length > 0 && 
