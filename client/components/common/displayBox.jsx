@@ -17,12 +17,10 @@ export const DisplayBox =({ header, list, emptyMessage }) => {
         {list.length > 0 &&
           <div>
             {list.map((item) => (
-              <div key={item.id} className="list-display">
-                <div>{item.title}</div>
-                <div 
-                   
-                  >{item.thumbnail ? <img src={item.thumbnail} alt={item.title} /> : ''}{item.author ? ` by ${item.author}` : ''}</div>
-                
+              <div key={item.id} className="list-display">                  
+                <div className="title-author">
+                  <div>{item.title} by: {item.author}</div>
+                </div>
               </div>
             ))}
           </div>
