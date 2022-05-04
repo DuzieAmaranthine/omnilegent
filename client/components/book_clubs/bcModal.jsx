@@ -33,56 +33,54 @@ export const BcModal = ({ addClub, closeModal }) => {
     <>
       <div className='dark-back' onClick={closeModal}>
         <div className="centered-modal">
-          <div className="modal-container">
+          <div className="bc-modal-container">
             <div className="modal" onClick={(e) => e.stopPropagation()}>
               <div className="modal-title">Create a New Book Club</div>
 
-              <div className="search-form">
-                <div className="book-form">
-                  <form>
-                    <div className="input-fields">
-                      <label htmlFor="ctitle">Club Name:</label>
-                      <input 
-                        type="text" 
-                        id="ctitle" 
-                        name="ctitle"
-                        value={clubTitle}
-                        onChange={(e) => setClubTitle(e.target.value)} 
-                      />
+              <div className="bc-form">
+                <form>
+                  <div className="input-fields">
+                    <label htmlFor="ctitle">Club Name:</label>
+                    <input 
+                      type="text" 
+                      id="ctitle" 
+                      name="ctitle"
+                      value={clubTitle}
+                      onChange={(e) => setClubTitle(e.target.value)} 
+                    />
 
-                      <label htmlFor="meet">Meeting Time:</label>
-                      <input 
-                        type="text" 
-                        id="meet" 
-                        name="meet" 
-                        value={meetingTime}
-                        onChange={(e) => setMeetingTime(e.target.value)}
-                      />
-                        
+                    <label htmlFor="meet">Meeting Time:</label>
+                    <input 
+                      type="text" 
+                      id="meet" 
+                      name="meet" 
+                      value={meetingTime}
+                      onChange={(e) => setMeetingTime(e.target.value)}
+                    />
+                      
 
-                      <label htmlFor="bgenre">Current Topic:</label>
-                      <input 
-                        type="text" 
-                        id="topic" 
-                        name="topic"
-                        value={clubTopic}
-                        onChange={(e) => setClubTopic(e.target.value)}
-  
-                      />
-                    
-                      <label htmlFor="cdescription">Description:</label>
-                      <textarea 
-                        type="text" 
-                        id="cdescription" 
-                        name="cdescription" 
-                        className="bdisc"
-                        value={clubDesc}
-                        onChange={(e) => setClubDesc(e.target.value)}
-  
-                      />
-                    </div>
-                  </form>
-                </div>
+                    <label htmlFor="bgenre">Current Topic:</label>
+                    <input 
+                      type="text" 
+                      id="topic" 
+                      name="topic"
+                      value={clubTopic}
+                      onChange={(e) => setClubTopic(e.target.value)}
+
+                    />
+                  
+                    <label htmlFor="cdescription">Description:</label>
+                    <textarea 
+                      type="text" 
+                      id="cdescription" 
+                      name="cdescription" 
+                      className="bdisc"
+                      value={clubDesc}
+                      onChange={(e) => setClubDesc(e.target.value)}
+
+                    />
+                  </div>
+                </form>
               </div>
               
               <div className="modal-buttons">

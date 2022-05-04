@@ -90,14 +90,8 @@ export const BookClub = () => {
               </div>
             </div>
         </div>
-
       </div>
-        
-
-
     </div>
-
-
   </div>
   )
 }
