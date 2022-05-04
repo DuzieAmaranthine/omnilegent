@@ -132,6 +132,7 @@ body {
   background-color: white;
   margin: 16px;
   width: 30%;
+  height: 68vh;
 }
 
 @media (max-width: 768px) {
@@ -175,11 +176,6 @@ body {
 
 .list-display:hover {
   background-color: #fafafa;
-}
-
-.list-display img {
-  max-height: 12%;
-  max-width: 9%;
 }
 
 .sort-box {
