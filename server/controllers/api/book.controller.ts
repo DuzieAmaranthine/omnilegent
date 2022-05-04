@@ -72,7 +72,8 @@ export class BookController {
     }
 
     book.hasRead = true;
-    book.dateRead = Date.toString();
+    book.dateRead = new Date().toLocaleString();
+    
     const updatedBook = await this.booksService.updateBook(book);
 
     return {'success' : `Book's read status is now ${book.hasRead}`};

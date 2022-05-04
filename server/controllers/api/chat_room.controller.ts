@@ -56,7 +56,11 @@ export class ChatroomController {
   @Get('/club_members/:id')
   public async members(@Param('id') id : string) {
     const memberObjs = await this.chatroomsService.findMembersForClub(parseInt(id, 10));
-    console.log(memberObjs);
+    const members = [];
+    for (let i = 0; i < memberObjs.length; i++) {
+      console.log(memberObjs[i]);
+      
+    }
     
     return memberObjs;
   }

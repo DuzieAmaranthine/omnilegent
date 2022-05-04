@@ -1,4 +1,4 @@
-export const LibraryBookDisplay =({ book }) => {
+export const LibraryBookDisplay =({ book, deleteBook }) => {
 
   return(
     <div className="book-display">
@@ -9,7 +9,7 @@ export const LibraryBookDisplay =({ book }) => {
             {book.hasRead === true && <div>{book.dateRead}</div>}
           </div>
           <div className="library-button-holder">
-            <button className="book-delete">Delete</button>
+            <button className="book-delete" onClick={() => deleteBook(book)}>Delete</button>
           </div>
         </div>
         <div className="info-display">

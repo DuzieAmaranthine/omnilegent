@@ -81,7 +81,12 @@ export const TbrList = () => {
         <div className="bookshelf">
           {tbrList.length > 0 &&
             tbrList.map((book) => (
-              <BookDisplay key={book.id} book={book}></BookDisplay>
+              <BookDisplay 
+                key={book.id} 
+                book={book}
+                deleteBook={deleteBook}
+                finishBook={completeBook}
+              ></BookDisplay>
             ))}
         </div>
 

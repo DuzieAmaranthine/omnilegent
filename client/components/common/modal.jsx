@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '../common/button';
 
 export const Modal = ({ addBook, closeModal }) => {
+  const [searchQuery, setSearchQuery] = useState('');
   const [searchList, setSearchList] = useState([]);
   const [currentBook, setCurrentBook] = useState(null);
   const [bookAuthor, setBookAuthor] = useState('');
@@ -12,6 +13,7 @@ export const Modal = ({ addBook, closeModal }) => {
   const [bookRead, setBookRead] = useState(false);
 
   const search = async (query) => {
+    setSearchQuery(query);
 
     if (query === '') {
       return;
@@ -22,6 +24,18 @@ export const Modal = ({ addBook, closeModal }) => {
     fetch(url)
       .then(response => response.json())
       .then(data => setSearchList(data.items));
+  }
+
+  const searchMore = async (scroll) => {
+
+    if (scroll.scrollHeight === (scroll.clientHeight + scroll.scrollTop)) {
+      const url = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&startIndex=${searchList.length - 1}&maxResults=10&`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => setSearchList([...searchList, ...data.items]));
+    }
+    return;
   }
 
   const applyBook = async (book) => {
@@ -116,7 +130,7 @@ export const Modal = ({ addBook, closeModal }) => {
                     />
                   </div>
 
-                  <div className="search-list">
+                  <div className="search-list" onScroll={(e) => searchMore(e.currentTarget)}>
                     {searchList &&
                       searchList.map((book) => (
                         <div className="search-results" key={book.volumeInfo.id} onClick={() => applyBook(book)}>

@@ -71,7 +71,10 @@ export const Library = () => {
         <div className="bookshelf">
           {library.length > 0 &&
             library.map((book) => (
-              <LibraryBookDisplay book={book}></LibraryBookDisplay>
+              <LibraryBookDisplay 
+                book={book}
+                deleteBook={deleteBook}
+              ></LibraryBookDisplay>
             ))}
         </div>
       </div>
