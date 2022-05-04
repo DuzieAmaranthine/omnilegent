@@ -476,16 +476,56 @@ textarea {
 /* Book Club Modal */
 
 
+/* Book Club Header */
+.bc-header{
+  background-color: var(--vDarkCyan);
+  padding-left: 10px;
+  padding-bottom: 6px;
+}
+
+.bc-title {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: xx-large;
+  border-bottom-width: 2px;
+  border-bottom-color: var(--dLimeGreen);
+  color: white;
+}
+
+.bc-subtitle {
+  color: white;
+}
+
+.bc-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: white;
+}
+
+.bc-nav {
+  padding: 5px 10px 5px 10px;
+  border-bottom-width: 2px;
+  border-bottom-color: white;
+  font-style: italic;
+  font-size: small;
+}
+
+.bc-nav:hover {
+  border-bottom-color: var(--desatOrange);
+  border-bottom-width: 2px;
+}
+
+
 
 /* Book Clubs */
-.bc-header {
+.c-header {
   background-color: #1a3b2b;
   display: flex;
   flex-direction: column;
   height: 8vh;
 }
 
-.bc-title {
+.c-title {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: xx-large;
   color: white;
@@ -494,13 +534,13 @@ textarea {
   flex-direction: row;
 }
 
-.bc-title h1 {
+.c-title h1 {
   border-bottom: solid var(--darkCyan);
   width:80%;
   height: 48px;
 }
 
-.bc-subtitle {
+.c-subtitle {
   font-size: medium;
   font-style: italic;
   margin-left: 12px;
@@ -508,7 +548,7 @@ textarea {
   text-decoration: none;
 }
 
-.bc-subsubtitle {
+.c-subsubtitle {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: medium;
   color: white;

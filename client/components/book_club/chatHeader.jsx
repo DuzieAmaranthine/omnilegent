@@ -1,25 +1,26 @@
 import { useNavigate } from "react-router";
 
-export const BcHeader =({ logout, header, topic, meeting }) => {
+export const ChatHeader =({ logout, header, topic, meeting }) => {
   const navigate = useNavigate();
   return(
     <div>
-      <div className="bc-header">
-        <div className="bc-title">
+      <div className="c-header">
+        <div className="c-title">
           <h1>{ header }</h1>
           {topic && 
-            <h3 className="bc-subtitle">{ `Meets : ${meeting}` }</h3>
+            <h2 className="c-subtitle">{ `Meets : ${meeting}` }</h2>
           }
         </div>
         {meeting && 
-          <div className="bc-subsubtitle">{ topic  }</div>
+          <div className="c-subsubtitle">{ topic  }</div>
         }
       </div>
         
-      <div className="bc-nav-bar">
+      <div className="nav-bar">
         <button className="big-nav" onClick={() => navigate(`../`)}>Home</button>
         <button className="big-nav" onClick={() => navigate(`../tbrList`)}>TBR List</button>
         <button className="big-nav" onClick={() => navigate(`../library`)}>My Library</button>
+        <button className="big-nav" onClick={() => navigate(`../bookClubs`)}>Book Clubs</button>
         <button className="big-nav" onClick={logout}>Logout</button>
       </div>
     </div>

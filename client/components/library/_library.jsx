@@ -74,11 +74,7 @@ export const Library = () => {
               <LibraryBookDisplay book={book}></LibraryBookDisplay>
             ))}
         </div>
-
       </div>
-      
-      
     </div>
-
   )
 }
