@@ -57,10 +57,10 @@ export const BookClub = () => {
 
   return (
     <div>
-      <div className='club-container'>
+      <div className="members-header">
         <MembersBar club={club} user={user}></MembersBar>
 
-        <div className='chat-container'>
+        <div className="header-chat">
           <ChatHeader 
             logout={logout} 
             header={club.title} 
@@ -68,29 +68,35 @@ export const BookClub = () => {
             meeting={ club.meetingTime ? club.meetingTime : null}
           ></ChatHeader>
 
-          <div className='messages-container'>
-            {messages.length > 0 && 
+          <div className="chat-container">
 
-            messages.map((message) => (
-              <MessageBox 
-                contents={message.contents} 
-                user={message.user} 
-                currentUser={user}
-              ></MessageBox>
-            ))}
+            <div className="messages-container">
+              {messages.length > 0 && 
 
-          </div>
+              messages.map((message) => (
+                <MessageBox 
+                  contents={message.contents} 
+                  user={message.user} 
+                  currentUser={user}
+                ></MessageBox>
+              ))}
+            </div>
 
-          <div className='text-container'>
-            <textarea value={contents} placeholder={`Send Message...`} onChange={(e) => setContents(e.target.value)}></textarea>
-            <button className='chat-button' onClick={() => send()}>Send</button>
-          </div>
-
+            <div className="text-container">
+              <textarea value={contents} placeholder={`Send Message...`} onChange={(e) => setContents(e.target.value)}></textarea>
+              <div className="chat-button-holder">
+                <button className='chat-button' onClick={() => send()}>Send</button>
+              </div>
+            </div>
         </div>
 
       </div>
+        
 
 
     </div>
+
+
+  </div>
   )
 }
