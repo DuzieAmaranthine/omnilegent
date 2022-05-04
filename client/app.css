@@ -545,7 +545,7 @@ textarea {
 .bc-box {
   background-color: white;
   margin: 16px;
-  width: 30%;
+  width: 45%;
 }
 
 @media (max-width: 768px) {
@@ -558,6 +558,16 @@ textarea {
     width: 100%;
     height: 40vh;
   }
+}
+
+.bc-box-display {
+  padding: 10px 15px 10px 15px;
+  max-height: 85%;
+  overflow-y: scroll;
+}
+
+.bc-box-display::-webkit-scrollbar {
+  width: 0 !important;
 }
 
 .book-club-title {
@@ -573,10 +583,6 @@ textarea {
   flex-direction: row-reverse;
   justify-content: end;
 }
-
-
-
-
 
 /* Chat Rooms */
 .c-header {
