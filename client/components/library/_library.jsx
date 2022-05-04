@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { SmallHeader } from "../common/smallHeader";
 import { Modal } from "../common/modal";
 import { AddBook } from "../common/addBook";
 import { BookDisplay } from "../common/bookDisplay";
@@ -7,6 +6,8 @@ import { ApiContext } from "../../utils/api_context";
 import { AuthContext } from "../../utils/auth_context";
 import { RolesContext } from "../../utils/roles_context";
 import { useNavigate } from "react-router";
+import { LibHeader } from "./libHeader";
+import { LibraryBookDisplay } from "./libraryBookDisplay";
 
 export const Library = () => {
   const [, setAuthToken] = useContext(AuthContext);
@@ -61,13 +62,16 @@ export const Library = () => {
     <div>
       {openModal && <Modal addBook={addBook} closeModal={() => setOpenModal(false)}></Modal>}
       <div>
-        <SmallHeader header="My Library" logout={logout}></SmallHeader>
-        <div className="bookshelf">
+        <LibHeader header={'My Library'} logout={logout}></LibHeader>
+        
+        <div className='add-button-holder'>
           <AddBook open={() => setOpenModal(true)}></AddBook>
+        </div>
 
+        <div className="bookshelf">
           {library.length > 0 &&
             library.map((book) => (
-              <BookDisplay book={book}></BookDisplay>
+              <LibraryBookDisplay book={book}></LibraryBookDisplay>
             ))}
         </div>
 
