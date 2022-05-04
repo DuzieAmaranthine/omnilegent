@@ -535,6 +535,49 @@ textarea {
 
 
 
+/* Book Club */
+.bc-box-holder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.bc-box {
+  background-color: white;
+  margin: 16px;
+  width: 30%;
+}
+
+@media (max-width: 768px) {
+  .bc-box-holder {
+    flex-direction: column;
+    margin-right: 26px;
+  }
+
+  .bc-box {
+    width: 100%;
+    height: 40vh;
+  }
+}
+
+.book-club-title {
+  font-size: large;
+}
+
+.meeting-time {
+  font-size: small;
+}
+
+.bc-button-holder {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: end;
+}
+
+
+
+
+
 /* Chat Rooms */
 .c-header {
   background-color: #1a3b2b;

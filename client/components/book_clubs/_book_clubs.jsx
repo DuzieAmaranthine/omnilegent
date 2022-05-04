@@ -90,18 +90,23 @@ export const BookClubs = () => {
   return (
     <div>
       <BcHeader header={'Book Clubs'} logout={logout}></BcHeader>
+     
       <div className="box-holder">
-        <ClubBox
-        joined={true}
-        quitRoom={quitRoom}
-        roomList={myClubs}
-        ></ClubBox>
+        <div className="bc-box">
+          <ClubBox
+          joined={true}
+          quitRoom={quitRoom}
+          roomList={myClubs}
+          ></ClubBox>
+        </div>
 
-        <ClubBox
-        joined={false}
-        joinRoom={joinRoom}
-        roomList={clubs}
-        ></ClubBox>
+        <div className="bc-box">
+          <ClubBox
+            joined={false}
+            joinRoom={joinRoom}
+            roomList={clubs}
+            ></ClubBox>
+        </div>
       </div>
     </div>
   );
