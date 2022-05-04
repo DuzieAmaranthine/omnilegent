@@ -494,8 +494,42 @@ textarea {
 }
 
 
-
 /* Book Club Modal */
+.bc-modal-container {
+  z-index: 10;
+  background-color: var(--desatOrange);
+  padding: 16px;
+  margin: 20px;
+  border-radius: 30px;
+  border-style: inset;
+  border-width: 6px;
+  border-color: var(--darkBrown);
+  width: 80vw;
+}
+
+.modal-title {
+  display: flex;
+  justify-content: center;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: var(--darkBrown);
+  font-size: x-large;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: var(--lightGrayOrange);
+  text-shadow: 2px 2px 2px var(--darkBrown);
+}
+
+.bc-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-height: 50%;
+  width: 100%;
+}
+
+.bc-form form {
+  width: 100%;
+}
 
 
 /* Book Club Header */
@@ -503,6 +537,7 @@ textarea {
   background-color: var(--vDarkCyan);
   padding-left: 10px;
   padding-bottom: 6px;
+  height: 100%;
 }
 
 .bc-title {
@@ -586,6 +621,7 @@ textarea {
   display: flex;
   flex-direction: row-reverse;
   justify-content: end;
+  margin-bottom: 8px;
 }
 
 /* Chat Rooms */
