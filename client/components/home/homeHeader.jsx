@@ -7,7 +7,7 @@ export const HomeHeader =({ logout }) => {
     <div>
       <div className="big-header">
         <h1 className="title1">omnilegent:</h1>
-        <h2>(adj) reading or having read everything</h2>
+        <h2 className="home-subtitle">(adj) reading or having read everything</h2>
       </div>
       <div className="nav-bar">
         <button className="big-nav" onClick={() => navigate(`tbrList`)}>TBR List</button>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
-import { HomeHeader } from '../common/homeHeader';
+import { HomeHeader } from './homeHeader';
 import { DisplayBox } from '../common/displayBox';
 import { Sort } from '../common/sort';
 import { Link } from 'react-router-dom';

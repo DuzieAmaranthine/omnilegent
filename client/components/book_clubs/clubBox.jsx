@@ -5,7 +5,7 @@ export const ClubBox = ({ joined, joinRoom, quitRoom, roomList }) => {
 
   return(
     <div className="box">
-      <div className="box-title">{joined ? 'Joined Clubs' : 'Available Clubs'}</div>
+      <div className="club-title">{joined ? 'Joined Clubs' : 'Available Clubs'}</div>
 
       {roomList.length === 0 && joined && 
         <div>You have not joined any rooms</div> 
