@@ -598,6 +598,7 @@ textarea {
   display: flex;
   flex-direction: column;
   height: 8vh;
+  width: 100vw;
 }
 
 .c-title {
@@ -630,8 +631,30 @@ textarea {
   margin-left: 28px;
 }
 
+.chat-nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: var(--dLimeGreen);
+  margin-right: 30px;
+}
 
-/* Book Club */
+.chat-nav {
+  padding: 5px 10px 5px 10px;
+  border-bottom-width: 2px;
+  border-bottom-color: var(--dLimeGreen);
+  font-style: italic;
+  font-size: small;
+}
+
+.chat-nav:hover {
+  border-bottom-color: #1a3b2b;
+  border-bottom-width: 2px;
+}
+
+
+
+/* Chat Room */
 .club-title {
   background-color: var(--desatOrange);
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -642,21 +665,21 @@ textarea {
   color: var(--lightGrayOrange);
 }
 
-.chat-button {
-  width: 60px;
-  height: 40px;
-  background-color: var(--vDarkCyan);
-  color: var(--vLightGray);
-  margin-top: 8px;
-  border-radius: 15px;
-}
-
-.club-container {
+.members-header {
   display: flex;
   flex-direction: row;
-  height: 96vh;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
+}
+
+.member-bar {
+  background-color: var(--vDarkCyan);
+  display: flex;
+  flex-direction: column;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8vh;
 }
 
 .chat-containter {
@@ -664,17 +687,6 @@ textarea {
   flex-direction: column;
   height: 100%;
   width: 100%;
-}
-
-.member-bar {
-  width: 108px;
-  height: 100%;
-  border-right: var(--vDarkCyan) solid;
-  background-color: var(--vDarkCyan);
-  display: flex;
-  flex-direction: column;
-  padding-top: 8vh;
-  padding-left: 14px;
 }
 
 .member-title {
@@ -685,27 +697,44 @@ textarea {
 
 .messages-container {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
+  justify-content: end;
   height: 70%;
   width: 100%;
   margin-left: 12px;
   overflow-y: scroll;
 }
 
+.user-display {
+  display: flex;
+  flex-direction: row;
+}
+
+.un {
+  margin-right: 4px;
+}
+
+.message-display {
+  margin-bottom: 8px;
+  width: 92vw;
+  padding: 4px;
+  background-color: white;
+}
+
 .text-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-left: 20px;
+  margin-bottom: 20px;
   width: 100%;
   border-top: black solid;
   padding-top: 20px;
-  align-items: flex-end;
   padding-right: 20px;
 }
 
 .text-container textarea {
   width: 85vw;
-  height: 8vh;
+  height: 12vh;
   resize: none;
   overflow: hidden;
   border-radius: 15px;
@@ -713,9 +742,19 @@ textarea {
   font-size: large;
 }
 
+.chat-button {
+  background-color: var(--vDarkCyan);
+  color: var(--vLightGray);
+  margin-top: 8px;
+  margin-left: 8px;
+  border-radius: 15px;
+  padding: 10px;
+}
+
 .text-container textarea::placeholder {
   font-style: italic;
 }
+
 .user-icon {
   background-color: var(--dLimeGreen);
   color: white;

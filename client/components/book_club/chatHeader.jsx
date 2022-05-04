@@ -16,12 +16,12 @@ export const ChatHeader =({ logout, header, topic, meeting }) => {
         }
       </div>
         
-      <div className="nav-bar">
-        <button className="big-nav" onClick={() => navigate(`../`)}>Home</button>
-        <button className="big-nav" onClick={() => navigate(`../tbrList`)}>TBR List</button>
-        <button className="big-nav" onClick={() => navigate(`../library`)}>My Library</button>
-        <button className="big-nav" onClick={() => navigate(`../bookClubs`)}>Book Clubs</button>
-        <button className="big-nav" onClick={logout}>Logout</button>
+      <div className="chat-nav-bar">
+        <button className="chat-nav" onClick={() => navigate(`../`)}>Home</button>
+        <button className="chat-nav" onClick={() => navigate(`../tbrList`)}>TBR List</button>
+        <button className="chat-nav" onClick={() => navigate(`../library`)}>My Library</button>
+        <button className="chat-nav" onClick={() => navigate(`../bookClubs`)}>Book Clubs</button>
+        <button className="chat-nav" onClick={logout}>Logout</button>
       </div>
     </div>
   )
