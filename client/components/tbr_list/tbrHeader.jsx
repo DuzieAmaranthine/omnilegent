@@ -6,7 +6,7 @@ export const TbrHeader =({ logout, header }) => {
     <div>
       <div className="tbr-header">
         <h1 className="tbr-title">{header}</h1>
-        <h2>Omnilegent: (adj) reading or having read everything</h2>
+        <h2 className="tbr-subtitle">Omnilegent: (adj) reading or having read everything</h2>
       </div>
       <div className="tbr-nav-bar">
         <button className="tbr-nav" onClick={() => navigate('../')}>Home</button>

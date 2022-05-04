@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
-import { TbrHeader } from '../common/tbrHeader';
+import { TbrHeader } from './tbrHeader';
 import { BookDisplay } from '../common/bookDisplay';
 import { AddBook } from '../common/addBook';
 import { Modal } from '../common/modal';
