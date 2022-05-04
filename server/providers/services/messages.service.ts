@@ -11,15 +11,11 @@ export class MessagesService {
   ) {}
 
   findAllForRoom(id : number): Promise<Message[]> {
-    console.log("IN SERVICE");
-    
     const mess = this.messagesRepository.find({
       where : { chatRoomId : id, },
     });
 
-    console.log(mess);
     return mess;
-    
   }
 
   async createMessage(message : Message): Promise<Message> {

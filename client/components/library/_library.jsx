@@ -34,7 +34,7 @@ export const Library = () => {
     const newBook = await api.post('/books', book);
 
     if (book.hasRead) {
-      setLibrary([...library, newBook.book]);
+      setLibrary([...library, newBook.newBook]);
     }
   };
 

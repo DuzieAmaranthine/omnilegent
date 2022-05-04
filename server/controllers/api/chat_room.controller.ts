@@ -58,11 +58,12 @@ export class ChatroomController {
     const memberObjs = await this.chatroomsService.findMembersForClub(parseInt(id, 10));
     const members = [];
     for (let i = 0; i < memberObjs.length; i++) {
-      console.log(memberObjs[i]);
-      
+      let member = memberObjs[i].user;
+      let currentMember = {name : member.firstName + " " + member.lastName, id : member.id}
+      members.push(currentMember);
     }
-    
-    return memberObjs;
+
+    return { members };
   }
 
   @Post('/chat_rooms')
