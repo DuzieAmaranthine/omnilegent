@@ -38,7 +38,7 @@ export class ChatRoomsService {
   }
 
   createChatRoom(chatRoom : ChatRoom) {
-    return this.chatRoomRepository.create(chatRoom);
+    return this.chatRoomRepository.save(chatRoom);
   }
 
   updateChatRoom(chatRoom : ChatRoom) {
@@ -46,7 +46,7 @@ export class ChatRoomsService {
   }
 
   createUserChatRoom(userChatRoom : UserChatRoom) {
-    return this.userChatRoomRepository.create(userChatRoom);
+    return this.userChatRoomRepository.save(userChatRoom);
   }
 
   deleteUserChatRoom(userChatRoom : UserChatRoom) {

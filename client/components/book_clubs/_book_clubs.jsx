@@ -4,6 +4,7 @@ import { ApiContext } from '../../utils/api_context';
 import { AuthContext } from '../../utils/auth_context';
 import { RolesContext } from '../../utils/roles_context';
 import { BcHeader } from '../common/bcHeader';
+import { ClubBox } from './club_box';
 import { DisplayBox } from '../common/displayBox';
 
 export const BookClubs = () => {
@@ -21,14 +22,22 @@ export const BookClubs = () => {
 
   useEffect(async () => {
     const res = await api.get('/users/me');
-    const allClubs = await api.get('/available_rooms');
+    const allClubs = await api.get('/chat_rooms');
     const joinedClubs = await api.get('/current_rooms');
+
+    console.log(joinedClubs);
 
     setClubs(allClubs.rooms);
     setMyClubs(joinedClubs.rooms);
     setUser(res.user);
     setLoading(false);
   }, []);
+
+  useEffect(async () => {
+    const set = clubs.filter((room) => !myClubs.includes(room));
+    setClubs(set);
+    console.log(set);
+  },[loading]);
 
   const createRoom = async (room) => {
     const newRoom = await api.post('/chat_rooms', room);
@@ -38,7 +47,7 @@ export const BookClubs = () => {
   };
 
   const deleteRoom = async (roomId) => {
-    const deleted = await api.delete(`/chat_rooms/${roomId}`);
+    const deleted = await api.del(`/chat_rooms/${roomId}`);
 
     if (deleted.success) {
       setMyClubs(myClubs.filter((rooms) => rooms.id !== roomId));
@@ -58,7 +67,7 @@ export const BookClubs = () => {
   };
 
   const quitRoom = async (roomId) => {
-    const quit = await api.delete(`/quit_room/${roomId}`);
+    const quit = await api.del(`/quit_room/${roomId}`);
 
     if (quit.success) {
       setMyClubs(myClubs.filter((rooms) => rooms.id !== roomId));
@@ -81,6 +90,21 @@ export const BookClubs = () => {
   return (
     <div>
       <BcHeader logout={logout} header={'My Book Clubs'}></BcHeader>
+      <div className='box-holder'>
+        <ClubBox
+          joined={true}
+          quitRoom={quitRoom}
+          roomList={myClubs}
+        ></ClubBox>
+
+        <ClubBox
+          joined={false}
+          joinRoom={joinRoom}
+          roomList={clubs}
+        ></ClubBox>
+
+
+      </div>
     </div>
   );
 };

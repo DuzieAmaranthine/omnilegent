@@ -38,7 +38,7 @@ export const Library = () => {
   };
 
   const deleteBook = async (book) => {
-    const deleteBook = await api.delete(`/books/${book.id}`);
+    const deleteBook = await api.del(`/books/${book.id}`);
 
     if (deleteBook.success) {
       const newLib = library.filter((books) => books.id !== book.id);
