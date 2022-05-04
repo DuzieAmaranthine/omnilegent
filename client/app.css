@@ -721,7 +721,7 @@ textarea {
 
 .text-container textarea {
   width: 85vw;
-  height: 8vh;
+  height: 12vh;
   resize: none;
   overflow: hidden;
   border-radius: 15px;
