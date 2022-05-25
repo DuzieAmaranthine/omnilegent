@@ -152,7 +152,7 @@ BookClub {
   ownerId : number,
   key : string,
   title : string,
-  topic : string,
+  description : string,
   isPublic : boolean,
   bannedUsers : UserBookClub // OneToMany
   members : UserBookClub // OneToMany
