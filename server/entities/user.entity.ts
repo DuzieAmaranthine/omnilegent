@@ -4,6 +4,7 @@ import { RefreshToken } from './refresh_token.entity';
 import { UserRole } from './user_role.entity';
 import { Book } from './book.entity';
 import { UserChatRoom } from './user_chatroom.entity';
+import { UserBookClub } from './user_book_club.entity';
 
 @Entity()
 export class User {
@@ -30,4 +31,7 @@ export class User {
 
   @OneToMany(() => UserChatRoom, (userChatRoom) => userChatRoom.user, { cascade : true})
   userChatRooms : UserChatRoom[];
+
+  @OneToMany(() => UserBookClub, (userBookClub) => userBookClub.user, { cascade : true})
+  userBookClubs : UserBookClub[];
 }

@@ -13,9 +13,10 @@ import { JwtService } from './providers/services/jwt.service';
 import { RolesService } from './providers/services/roles.service';
 import { UsersService } from './providers/services/users.service';
 import { GuardUtil } from './providers/util/guard.util';
+import { BookClubModule } from './modules/book_club.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(config), UsersModule, ChatRoomsModule, BooksModule],
+  imports: [TypeOrmModule.forRoot(config), UsersModule, ChatRoomsModule, BooksModule, BookClubModule],
   controllers: [AppController],
   providers: [
     PingGateway,

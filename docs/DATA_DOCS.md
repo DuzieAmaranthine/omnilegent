@@ -143,7 +143,7 @@ Message {
 }
 ```
 
-### BookClub (In Development)
+### BookClub
 A social environment for specific books and topics.
 
 ```typescript
@@ -156,10 +156,25 @@ BookClub {
   isPublic : boolean,
   bannedUsers : UserBookClub // OneToMany
   members : UserBookClub // OneToMany
+  posts : Post //ManyToOne
 }
 ```
 
-### UserBookClub (In Development)
+```typescript
+Controller {
+  GET : '/book_clubs' // returns all clubs (for admin use)
+  GET : '/book_clubs/:clubId' // returns one book club
+  GET : '/current_clubs' // returns all clubs for user
+  GET : '/available_clubs' // returns all joinable clubs
+  GET : '/current_members/:clubId' // returns all members
+  POST : '/book_clubs' // creates a club
+  POST : '/join_club/:clubId' // joins a club
+  PUT : '/ban_user/:clubId/:userId' // bans a user from a club
+  DELETE : '/quit_club/:clubId' // quits a club
+}
+```
+
+### UserBookClub 
 Handles the ManyToMany relations between user and book clubs, including both members and banned users.
 
 ```typescript
@@ -173,8 +188,33 @@ UserBookClub {
 }
 ```
 
+### Post
+Handles posts and comments on a book club messaging thread
 
+```typescript
+Post {
+  id : number,
+  bookClubId : number,
+  userName : string,
+  userId : number,
+  content : string,
+  postDate : number,
+  likes : int[],    // array of user ids who have liked the post
+  isDeleted : boolean,
+  bookClub : BookClub,
+  reply : Post,
+  comments : Post, // not currently being implemented
+}
+```
 
-
-
-
+```typescript
+Controllers {
+  GET : '/posts' // returns all posts (for admin use)
+  GET : '/posts/:clubId' // returns posts for club
+  GET : '/post/:postId' // returns one post
+  POST : '/post' // creates a post, implemented in providers/gateways
+  PUT : '/post/:postId' // edits a post
+  PUT : '/like_post/:postId' // increments/decrements likes
+  DELETE : '/post/:postId' // soft delete post
+}
+```

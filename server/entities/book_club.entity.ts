@@ -1,6 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Message } from './message.entity';
 import { UserBookClub } from './user_book_club.entity';
+import { Post } from './post.entity';
+
 @Entity()
 export class BookClub {
   @PrimaryGeneratedColumn()
@@ -24,6 +25,6 @@ export class BookClub {
   @OneToMany(() => UserBookClub, (userBookClub) => userBookClub.bookClub, {cascade : true})
   userBookClubs : UserBookClub[];
 
-  @OneToMany(() => Message, (message) => message.thread, { cascade : true })
-  messages : Message[];
+  @OneToMany(() => Post, (post) => post.bookClub, { cascade : true })
+  posts : Post[];
 }
