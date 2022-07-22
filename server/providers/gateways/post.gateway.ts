@@ -41,9 +41,13 @@ export class PostsGateway implements OnGatewayConnection, OnGatewayDisconnect {
     try {
       const jwt = client.handshake.auth.token;
       this.jwtService.parseToken(jwt);
-      client.join(client.handshake.query.clubId as unknown as string);
+      client.join(client.handshake.query.bookClubId as unknown as string);
+      const posts = await this.postService.findAllForClub(client.handshake.query.bookClubId);
+      client.emit('initial-posts', posts)
     } 
     catch (e) {
+      console.log(e);
+      
       throw new WsException('Invalid Token');
     }
   }
@@ -51,6 +55,7 @@ export class PostsGateway implements OnGatewayConnection, OnGatewayDisconnect {
   handleDisconnect(client : any) {
     console.log('Client Disconnected');
   }
+
 
   @SubscribeMessage('post')
   async handlePost(
