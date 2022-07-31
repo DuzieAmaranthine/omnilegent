@@ -583,6 +583,14 @@ textarea {
 
 
 /* Book Club */
+
+.row-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
 .bc-box-holder {
   display: flex;
   flex-direction: row;
