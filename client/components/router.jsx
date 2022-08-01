@@ -25,7 +25,7 @@ export const Router = () => {
       <Route path="signup" element={<SignUp />} />
       <Route path="tbrlist" element={<TbrList />} />
       <Route path="library" element={<Library />} />
-      <Route path="bookclubs" element={<BookClubs />} />
+      <Route path="bookclubs" element={<BookClub />} />
       <Route path="bookclub/:id" element={<BookClub />} />
     </Routes>
   );

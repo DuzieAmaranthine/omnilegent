@@ -29,7 +29,7 @@ export const BookClub = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(async () => {
-    const user = await api.get('/user/me');
+    const user = await api.get('/users/me');
     setUser(user);
     setLoading(true);
   }, []);

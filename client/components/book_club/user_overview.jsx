@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { ApiContext } from "../../utils/api_context";
+import { FaUsers } from "react-icons/fa";
+import { AiFillHome } from "react-icons/ai";
+import { BsPlus } from "react-icons/bs";
 
 export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, setCLubList, availableClubs, setAvailableClubs, user, openBookClubModal}) => {
 
@@ -15,12 +18,11 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
   const [loadingMembers, setLoadingMembers] = useState(true);
 
   // Available club states
-  const [availableClubs, setAvailableClubs] = useState([]);
   const [loadingAvailableClubs, setLoadingAvailableClubs] = useState(true);
   
   useEffect(async () => {
-    const { availableClubs } = await api.get('/available_clubs');
-    setAvailableClubs(availableClubs);
+    const { getAvailableClubs } = await api.get('/available_clubs');
+    setAvailableClubs(getAvailableClubs);
     setLoadingAvailableClubs(false);
   }, [])
   
@@ -35,14 +37,14 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
   }, [currentBookClub]);
 
   const joinClub = async (club) => {
-    const { club } = await api.post(`/join_club/:${club.id}`);
+    const { newClub } = await api.post(`/join_club/:${club.id}`);
     setCLubList([...clubList, club]);
     setAvailableClubs(availableClubs.filter((clubs) => clubs.id !== club.id));
     setCurrentBookClub(club);
   }
 
   const leaveClub = async (club) => {
-    const { club } = await api.post(`/leave_club/:${club.id}`);
+    const { newClub } = await api.post(`/leave_club/:${club.id}`);
     setCLubList(clubList.filter((clubs) => clubs.id !== club.id));
     setAvailableClubs([...availableClubs, club]);
 
@@ -51,7 +53,42 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
     }
   }
 
+  const showClubs = () => {
+    setDisplayClubs(true);
+    setDisplayAvailableClubs(false);
+    setDisplayMembers(false);
+  }
+
+  const showAvailableClubs = () => {
+    setDisplayClubs(false);
+    setDisplayAvailableClubs(true);
+    setDisplayMembers(false);
+  }
+
+  const showMembers = () => {
+    setDisplayClubs(false);
+    setDisplayAvailableClubs(false);
+    setDisplayMembers(true);
+  }
+  
+
   return (
-  <div>Hello from UserOverview</div>
+  <div className="col-box">
+    <div className="row-box">
+      <AiFillHome 
+      className={displayClubs ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"} 
+      onClick={() => showClubs()} 
+      />
+      <FaUsers 
+      className={displayMembers ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"}
+      onClick={() => showMembers()}
+      />
+      <BsPlus 
+      className={displayAvailableClubs ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"}
+      onClick={() => showAvailableClubs()}
+      />  
+    </div>
+
+  </div>
   );
 }

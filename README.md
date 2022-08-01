@@ -29,3 +29,7 @@ The base of the application is a NestStartApp provided by dittonjs. Please read 
 
   *Documentation of the different types of data the application uses and the requests that is sent between the server and the client*
 
+6. [Licenses](/docs/LICENSES.md)
+
+  *Licenses used in the project*
+
