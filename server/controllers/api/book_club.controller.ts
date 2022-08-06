@@ -26,31 +26,31 @@ export class BookClubController {
   @Roles(RoleKey.ADMIN)
   public async index() {
     const clubs = await this.bookClubService.findAllBookClubs();
-    return { clubs };
+    return clubs;
   }
 
   @Get('/book_clubs/:clubId')
   public async show(@Param('clubId') clubId : string) {
     const club = this.bookClubService.findBookClubById(parseInt(clubId, 10));
-    return { club };
+    return club;
   }
 
   @Get('/current_clubs')
   public async current(@JwtBody() jwtBody : JwtBodyDto) {
     const clubs = await this.bookClubService.findAllForUser(jwtBody.userId);
-    return { clubs };
+    return clubs;
   }
 
   @Get('/available_clubs')
   public async available(@JwtBody() jwtBody : JwtBodyDto) {
     const clubs = await this.bookClubService.findAvailableBookClubs(jwtBody.userId);
-    return { clubs }
+    return clubs;
   }
 
   @Get('/current_members/:club_id')
   public async members(@Param('club_id') clubId : string) {
     const members = await this.bookClubService.findMembersForBookClub(parseInt(clubId, 10));
-    return { members };
+    return members;
   }
 
   @Post('/book_clubs')
@@ -75,7 +75,7 @@ export class BookClubController {
 
     const newUserClub = await this.bookClubService.createUserBookClub(userClub);
 
-    return { newClub };
+    return newClub;
   }
 
   @Post('/join_club/:club_id')
@@ -94,7 +94,7 @@ export class BookClubController {
 
     const newUserClub = await this.bookClubService.createUserBookClub(userClub);
 
-    return { club };
+    return club;
   }
 
   @Put('/ban_user/:clubId/:userId')

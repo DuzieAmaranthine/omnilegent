@@ -1,4 +1,3 @@
-import { set } from 'lodash';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { ApiContext } from '../../utils/api_context';
@@ -36,8 +35,10 @@ export const BookClub = () => {
 
   useEffect(async () => {
     if (user) {
-      const { bookClubs } = await api.get('/current_clubs');
-      const { availableClubs } = await api.get('/available_clubs');
+      const bookClubs = await api.get('/current_clubs');
+      const availableClubs = await api.get('/available_clubs');
+      console.log(bookClubs)
+      console.log(availableClubs)
       setBookClubs(bookClubs);
       setAvailableClubs(availableClubs);
       setLoading(false);

@@ -3,6 +3,7 @@ import { ApiContext } from "../../utils/api_context";
 import { FaUsers } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import { BsPlus } from "react-icons/bs";
+import { MessageBox } from "../common/message_box";
 
 export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, setCLubList, availableClubs, setAvailableClubs, user, openBookClubModal}) => {
 
@@ -20,12 +21,6 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
   // Available club states
   const [loadingAvailableClubs, setLoadingAvailableClubs] = useState(true);
   
-  useEffect(async () => {
-    const { getAvailableClubs } = await api.get('/available_clubs');
-    setAvailableClubs(getAvailableClubs);
-    setLoadingAvailableClubs(false);
-  }, [])
-  
   useEffect( async () => {
     if (currentBookClub) {
       setLoadingMembers(true);
@@ -37,14 +32,14 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
   }, [currentBookClub]);
 
   const joinClub = async (club) => {
-    const { newClub } = await api.post(`/join_club/:${club.id}`);
-    setCLubList([...clubList, club]);
+    const newClub = await api.post(`/join_club/:${club.id}`);
+    setCLubList([...clubList, newClub]);
     setAvailableClubs(availableClubs.filter((clubs) => clubs.id !== club.id));
     setCurrentBookClub(club);
   }
 
   const leaveClub = async (club) => {
-    const { newClub } = await api.post(`/leave_club/:${club.id}`);
+    const newClub = await api.post(`/leave_club/:${club.id}`);
     setCLubList(clubList.filter((clubs) => clubs.id !== club.id));
     setAvailableClubs([...availableClubs, club]);
 
@@ -71,24 +66,87 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
     setDisplayMembers(true);
   }
   
+  const banUser = async (user) => {
+    const message = await api.post(`/ban_user/${currentBookClub.id}/${user.id}`);
+    if (message.success) {
+      setMembers(members.filter((member) => member.id !== user.id));
+    }
+
+    return;
+  }
 
   return (
-  <div className="col-box">
-    <div className="row-box">
+  <div className="col-box left-col">
+    <div className="row-box"> 
       <AiFillHome 
-      className={displayClubs ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"} 
-      onClick={() => showClubs()} 
+        className={displayClubs ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"} 
+        onClick={() => showClubs()} 
       />
       <FaUsers 
-      className={displayMembers ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"}
-      onClick={() => showMembers()}
+        className={displayMembers ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"}
+        onClick={() => showMembers()}
       />
       <BsPlus 
-      className={displayAvailableClubs ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"}
-      onClick={() => showAvailableClubs()}
+        className={displayAvailableClubs ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"}
+        onClick={() => showAvailableClubs()}
       />  
     </div>
+    <div>
 
+      {displayClubs && clubList.length > 0 && 
+        <div>
+          {clubList.map((club) => (
+            <ClubBox
+              boxKey={club.id}
+              boxClub={club}
+              leaveClub={leaveClub}
+            ></ClubBox>
+          ))}
+        </div>
+      }
+
+      {displayClubs && clubList.length === 0 &&
+        <MessageBox
+          message={"Join a club!"}
+          actionClick={() => showAvailableClubs()}
+        ></MessageBox>
+      }
+
+      {displayMembers && members.length > 0 &&
+        <div>
+          {members.map((member) => (
+            <MemberBox
+              boxKey={member.id}
+              boxMember={member}
+              banUser={banUser}
+            ></MemberBox>
+          ))}
+        </div>
+      }
+
+      <div>
+      {displayAvailableClubs && availableClubs.length > 0 &&
+        <div>
+          <div className="gen-button confirm-button" onClick={() => openBookClubModal()}>Start Club</div>
+
+          {availableClubs.map((club) => (
+            <ClubBox
+              boxKey={club.id}
+              boxClub={club}
+              joinClub={joinClub}
+            ></ClubBox>
+          ))}
+        </div>
+      }
+
+      {displayAvailableClubs && availableClubs.length === 0 &&
+        <MessageBox
+          message={"Start A Club!"}
+          actionClick={() => openBookClubModal()}
+        ></MessageBox>
+      }
+      </div>
+    </div>   
   </div>
   );
 }
