@@ -882,16 +882,16 @@ textarea {
 .col-box {
   display: flex;
   flex-direction: column;
-  align-content: flex-start; 
+  justify-content: flex-start; 
   margin-top: 10px;
+  height: 85vh;
 }
 
 .left-col {
   border-right: solid 3px var(--vDarkCyan);
-  max-width: 300px;
-  min-width: 200px;
+  max-width: 220px;
+  min-width: 220px;
   margin-left: 0px;
-  height: 100%;
   overflow-y: scroll;
 }
 

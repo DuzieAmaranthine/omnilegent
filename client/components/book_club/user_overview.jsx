@@ -76,7 +76,7 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
   }
 
   return (
-  <div className="col-box left-col">
+  <div className="left-col col-box">
     <div className="row-box"> 
       <AiFillHome 
         className={displayClubs ? "clubs-icons-box clubs-icons-box-active" : "clubs-icons-box"} 

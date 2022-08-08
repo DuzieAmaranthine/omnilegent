@@ -6,6 +6,7 @@ import { RolesContext } from '../../utils/roles_context';
 import { useMessages } from '../../utils/use_message';
 import { usePost } from '../../utils/use_post';
 import { BcHeader } from '../book_clubs/bcHeader';
+import { ChatColumn } from '../common/chatColumn';
 import { ChatHeader } from './chatHeader';
 import { MembersBar } from './members_bar';
 import { MessageBox } from './message_box';
@@ -37,8 +38,6 @@ export const BookClub = () => {
     if (user) {
       const bookClubs = await api.get('/current_clubs');
       const availableClubs = await api.get('/available_clubs');
-      console.log(bookClubs)
-      console.log(availableClubs)
       setBookClubs(bookClubs);
       setAvailableClubs(availableClubs);
       setLoading(false);
@@ -66,7 +65,7 @@ export const BookClub = () => {
   }
 
   return (
-    <div>
+    <div className='book-club'>
       <BcHeader header={'Book Clubs'} logout={logout}></BcHeader>
 
       <div className='row-box'>
@@ -80,6 +79,12 @@ export const BookClub = () => {
         user={user}
         openBookClubModal={setBookClubModal}
         ></UserOverview>
+
+        <ChatColumn
+        currentBookClub={bookClub}
+        user={user}
+        loading={loading}
+        ></ChatColumn>
 
       </div>
     </div>

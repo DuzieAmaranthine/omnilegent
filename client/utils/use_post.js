@@ -3,12 +3,14 @@ import { AuthContext } from "./auth_context";
 import { io } from "socket.io-client";
 
 export const usePost = (bookClub) => {
+  const [loadingPosts, setLoadingPosts] = useState(true);
   const [posts, setPosts] = useState([]);
   const postsRef = useRef([]);
   const [socket, setSocket] = useState(null);
   const [authToken] = useContext(AuthContext);
 
   useEffect(() => {
+    setLoadingPosts(true);
     if (bookClub) {
       const socket = io({
         auth : { token : authToken},
@@ -26,12 +28,14 @@ export const usePost = (bookClub) => {
         setMessages(posts);
       });
 
+      setLoadingPosts(false);
       return () => {
         socket.off('post');
         socket.off('initial-messages');
         socket.disconnect();
       };
     }
+    setLoadingPosts(false);
     return () => {}
   }, [bookClub]);
 
@@ -39,5 +43,5 @@ export const usePost = (bookClub) => {
     socket.emit('post', newPost);
   };
 
-  return [posts, sendPost];
+  return [posts, sendPost, loadingPosts];
 };
