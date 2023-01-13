@@ -449,6 +449,7 @@ form {
 .input-fields {
   display: flex;
   flex-direction: column;
+  width: 45%;
 }
 
 .bdisc {
@@ -914,3 +915,30 @@ textarea {
   background-color: var(--vDarkCyan);
   
 }
+
+/* BookClub/ClubModal */
+
+.input-fields textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow: hidden;
+  padding: 8px;
+  font-size: medium;
+  min-height: 200px;
+}
+
+/* BookClub/ClubBox */
+
+.club-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  font-size: 30px;
+  margin: 5px;
+  background-color: transparent;
+}
+
+

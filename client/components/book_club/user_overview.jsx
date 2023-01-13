@@ -4,6 +4,7 @@ import { FaUsers } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
 import { BsPlus } from "react-icons/bs";
 import { MessageBox } from "../common/message_box";
+import { ClubBox } from "./club_box";
 
 export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, setCLubList, availableClubs, setAvailableClubs, user, openBookClubModal}) => {
 
@@ -97,9 +98,11 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
         <div>
           {clubList.map((club) => (
             <ClubBox
+              key={club.id}
               boxKey={club.id}
               boxClub={club}
               leaveClub={leaveClub}
+              onAction={() => setCurrentBookClub(club)}
             ></ClubBox>
           ))}
         </div>
@@ -134,6 +137,7 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
               boxKey={club.id}
               boxClub={club}
               joinClub={joinClub}
+              currentClub={currentBookClub}
             ></ClubBox>
           ))}
         </div>
@@ -142,7 +146,7 @@ export const UserOverview = ({currentBookClub, setCurrentBookClub, clubList, set
       {displayAvailableClubs && availableClubs.length === 0 &&
         <MessageBox
           message={"Start A Club!"}
-          actionClick={() => openBookClubModal()}
+          actionClick={() => openBookClubModal(true)}
         ></MessageBox>
       }
       </div>

@@ -17,7 +17,14 @@ export const ChatColumn = ({ currentBookClub, user, loading}) => {
     setContents('');
   }
 
+  if (currentBookClub === null) {
+    return (
+      <div>Insert Book Image</div>
+    )
+  }
+
   return (
+    
     <div className="col-box"><ClipLoader color="#1a3b2b"></ClipLoader></div>
   )
 }

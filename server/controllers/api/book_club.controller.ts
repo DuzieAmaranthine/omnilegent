@@ -38,13 +38,14 @@ export class BookClubController {
   @Get('/current_clubs')
   public async current(@JwtBody() jwtBody : JwtBodyDto) {
     const clubs = await this.bookClubService.findAllForUser(jwtBody.userId);
-    return clubs;
+    
+    return clubs.map(club => club.bookClub);
   }
 
   @Get('/available_clubs')
   public async available(@JwtBody() jwtBody : JwtBodyDto) {
     const clubs = await this.bookClubService.findAvailableBookClubs(jwtBody.userId);
-    return clubs;
+    return clubs.map(club => club.bookClub);
   }
 
   @Get('/current_members/:club_id')

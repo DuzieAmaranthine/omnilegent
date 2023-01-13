@@ -11,6 +11,7 @@ import { ChatHeader } from './chatHeader';
 import { MembersBar } from './members_bar';
 import { MessageBox } from './message_box';
 import { UserOverview } from './user_overview';
+import { ClubModal } from './club_Modal';
 
 export const BookClub = () => {
 
@@ -41,6 +42,7 @@ export const BookClub = () => {
       setBookClubs(bookClubs);
       setAvailableClubs(availableClubs);
       setLoading(false);
+      console.log(bookClubs);
     }
   }, [user]);
 
@@ -66,6 +68,8 @@ export const BookClub = () => {
 
   return (
     <div className='book-club'>
+      {bookClubModal && (<ClubModal addClub={addClub} close={() => setBookClubModal(false)}></ClubModal>)}
+
       <BcHeader header={'Book Clubs'} logout={logout}></BcHeader>
 
       <div className='row-box'>
